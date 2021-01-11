@@ -1,0 +1,34 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    env_file:
+      - .env
+    command: bash -c "
+      uvicorn fastapi_redis.main:app
+      --host 0.0.0.0 --port 8080
+      --lifespan=on --use-colors --loop uvloop --http httptools
+      --reload  --reload-dir /app/fastapi_redis --reload-dir /app/tests
+      "
+    volumes:
+      - .:/app/
+    ports:
+      - 8080:8080
+    depends_on:
+      - redis
+
+  redis:
+    restart: always
+    env_file:
+      - .env
+    image: redis:6.0.9-alpine
+    command: redis-server --requirepass ${REDIS_PASSWORD}
+    volumes:
+      - redisdata:/data
+    ports:
+      - 6379:6379
+
+volumes:
+  redisdata:
+
