@@ -38,3 +38,9 @@ async def health_check(settings: config.Settings = Depends(config.get_settings))
     except:  # noqa: E722
         value = settings.down
     return {settings.web_server: settings.up, str(settings.redis_url): value}
+
+
+# 1. get list of SMILES
+# 2. loop over it d2 = {k: f(v) for k, v in d1.items()} like fps = [Chem.RDKFingerprint(x) for x in ms]
+# to build {k:v} for redis HSET
+# 3. insert HSET as async call to redis
