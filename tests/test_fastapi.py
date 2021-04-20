@@ -3,7 +3,7 @@ from httpx import AsyncClient
 import fakeredis.aioredis
 from fastapi import status
 
-from fastapi_redis.main import app
+from app.main import app
 
 
 @pytest.fixture

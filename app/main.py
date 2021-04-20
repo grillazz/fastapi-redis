@@ -2,7 +2,7 @@ from fastapi import FastAPI, Depends
 from aioredis import create_redis_pool, Redis
 
 
-from fastapi_redis import config
+from app import config
 
 global_settings = config.Settings()
 

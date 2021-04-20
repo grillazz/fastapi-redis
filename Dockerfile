@@ -10,10 +10,10 @@ RUN set -ex && pip install pipenv --upgrade
 RUN set -ex && mkdir -p /app
 
 # Set work directory
-WORKDIR /app
+WORKDIR /source
 
 # Copy project
-COPY . /app/
+COPY . /source/
 
 # Install dependencies
 RUN set -ex && pipenv install --deploy --system

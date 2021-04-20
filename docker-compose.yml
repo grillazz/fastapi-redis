@@ -6,10 +6,10 @@ services:
     env_file:
       - .env
     command: bash -c "
-      uvicorn fastapi_redis.main:app
+      uvicorn app.main:app
       --host 0.0.0.0 --port 8080
       --lifespan=on --use-colors --loop uvloop --http httptools
-      --reload  --reload-dir /app/fastapi_redis --reload-dir /app/tests
+      --reload  --reload-dir /source/fastapi_redis --reload-dir /source/tests
       "
     volumes:
       - .:/app/
