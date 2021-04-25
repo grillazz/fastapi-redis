@@ -26,8 +26,45 @@ class CompoundSchema(BaseModel):
     id: dict = Field(...)
     atoms: dict = Field(...)
     bonds: dict = Field(...)
-    stereo: dict = Field(...)
-    cords: dict = Field(...)
+    stereo: list = Field(...)
+    coords: list = Field(...)
     charge: int = Field(...)
     props: List[PropsSchema] = Field(...)
     count: dict = Field(...)
+
+
+class CompoundsListSchema(BaseModel):
+    PC_Compounds: List[CompoundSchema] = Field(...)
+
+    class Config:
+        schema_extra = {
+            "example": {
+                "PC_Compounds": [
+                    {
+                        "id": {},
+                        "atoms": {},
+                        "bonds": {},
+                        "stereo": [],
+                        "coords": [],
+                        "charge": 0,
+                        "props": [
+                            {
+                                "urn": {
+                                    "label": "SMILES",
+                                    "name": "Canonical",
+                                    "datatype": 1,
+                                    "version": "2.1.5",
+                                    "software": "OEChem",
+                                    "source": "openeye.com",
+                                    "release": "2019.06.18"
+                                },
+                                "value": {
+                                    "sval": "CCC(CC)COC(=O)C(C)NP(=O)(OCC1C(C(C(O1)(C#N)C2=CC=C3N2N=CN=C3N)O)O)OC4=CC=CC=C4"
+                                }
+                            },
+                        ],
+                        "count": {}
+                    },
+                ]
+            }
+        }

@@ -1,6 +1,6 @@
 from fastapi import FastAPI, Depends
 from aioredis import create_redis_pool, Redis
-
+from app.schemas import CompoundsListSchema
 
 from app import config
 
@@ -39,6 +39,10 @@ async def health_check(settings: config.Settings = Depends(config.get_settings))
         value = settings.down
     return {settings.web_server: settings.up, str(settings.redis_url): value}
 
+
+@app.post("/add-smiles")
+async def add_smiles(request: CompoundsListSchema):
+    return request
 
 # 1. get list of SMILES
 # 2. loop over it d2 = {k: f(v) for k, v in d1.items()} like fps = [Chem.RDKFingerprint(x) for x in ms]
