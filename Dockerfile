@@ -1,20 +1,32 @@
-# Pull base image
-FROM python:3.9-buster
+FROM ubuntu:groovy as builder
 
-# Set environment variables
-ENV PYTHONDONTWRITEBYTECODE 1
-ENV PYTHONUNBUFFERED 1
+# Add universe repository
+RUN echo "deb http://archive.ubuntu.com/ubuntu groovy universe " >> /etc/apt/sources.list
 
-# Install pipenv
+RUN apt-get update
+RUN apt-get upgrade -y
+
+### Install rdkit
+RUN apt-get install -y python3-rdkit librdkit1 rdkit-data
+
+
+FROM builder as pipenv
+RUN apt-get install -y python3-pip
+WORKDIR /pipfiles
+COPY Pipfile Pipfile
+COPY Pipfile.lock Pipfile.lock
+
+## Install pipenv
 RUN set -ex && pip install pipenv --upgrade
-RUN set -ex && mkdir -p /app
 
-# Set work directory
+## Upgrde pip, setuptools and wheel
+RUN set -ex && pip install --upgrade pip setuptools wheel
+
+## Install dependencies
+RUN set -ex && pipenv install --system --sequential --ignore-pipfile --dev
+
+FROM pipenv as final
 WORKDIR /source
-
-# Copy project
-COPY . /source/
-
-# Install dependencies
-RUN set -ex && pipenv install --deploy --system
-
+COPY ./app/ /source/
+COPY ./tests/ /source/
+COPY .env /source/

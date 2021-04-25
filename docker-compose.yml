@@ -9,10 +9,10 @@ services:
       uvicorn app.main:app
       --host 0.0.0.0 --port 8080
       --lifespan=on --use-colors --loop uvloop --http httptools
-      --reload  --reload-dir /source/fastapi_redis --reload-dir /source/tests
+      --reload  --reload-dir /source/app --reload-dir /source/tests
       "
     volumes:
-      - .:/app/
+      - .:/source/
     ports:
       - 8080:8080
     depends_on:
