@@ -1,19 +1,33 @@
 [[source]]
-name = "pypi"
 url = "https://pypi.org/simple"
 verify_ssl = true
-
-[dev-packages]
-black = "*"
-flake8 = "*"
+name = "pypi"
 
 [packages]
+isort = "*"
+mypy = "*"
+flake8 = "*"
+black = "*"
 fastapi = "*"
 uvicorn = {extras = ["standard"], version = "*"}
+pydantic = "*"
+pytest-asyncio = "*"
+pytest-cov = "*"
+httpx = "*"
 aioredis = "*"
 fakeredis = "*"
-pytest-asyncio = "*"
-httpx = "*"
+
+[dev-packages]
+icecream = "*"
+ipython = "*"
+isort = "*"
+mypy = "*"
+flake8 = "*"
+black = "*"
+bandit = "*"
 
 [requires]
-python_version = "3.9"
+python_version = "3.8.6"
+
+[pipenv]
+allow_prereleases = true
