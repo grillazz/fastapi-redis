@@ -44,7 +44,7 @@ async def health_check(settings: config.Settings = Depends(config.get_settings))
 
 
 @app.post("/add-smiles")
-async def add_smiles_to_hash(payload: CompoundsListSchema):
+async def add_smiles_to_hash(payload: CompoundsListSchema, redis_hash: str):
 
     mols = {}
     # filter SMILES from compounds and add to molecule dict
@@ -55,17 +55,21 @@ async def add_smiles_to_hash(payload: CompoundsListSchema):
 
     # save molecules to redis hash
     for k, v in mols.items():
-        await app.state.redis.hset("mols:figers", k, v)
+        await app.state.redis.hset(redis_hash, k, v)
 
     # TODO: test hset with k:v list as one insert
-    return True
+    hash_len = await app.state.redis.hlen(redis_hash)
+    return {
+        "number_of_inserted_keys": hash_len,
+        "hash_name": redis_hash
+    }
 
 
 @app.get("/compare-smiles")
-async def get_smiles_and_compare(compound: str):
+async def get_smiles_and_compare(compound: str, redis_hash: str):
     mol = RDKFingerprint(MolFromSmiles(compound))
 
-    mol_hash = await app.state.redis.hgetall("mols:figers")
+    mol_hash = await app.state.redis.hgetall(redis_hash)
 
     similarity = {}
     for smile, value in mol_hash.items():
