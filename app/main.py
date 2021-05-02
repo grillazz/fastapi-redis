@@ -1,7 +1,6 @@
 from aioredis import Redis, create_redis_pool
-from fastapi import Depends, FastAPI, Request
+from fastapi import Depends, FastAPI
 from rdkit.Chem import MolFromSmiles, RDKFingerprint
-from rdkit.Chem.Fingerprints.FingerprintMols import FingerprintMol, GetRDKFingerprint
 from rdkit.DataStructs import FingerprintSimilarity
 
 from app import config
