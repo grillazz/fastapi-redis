@@ -56,11 +56,11 @@ class CompoundsListSchema(BaseModel):
                                     "version": "2.1.5",
                                     "software": "OEChem",
                                     "source": "openeye.com",
-                                    "release": "2019.06.18"
+                                    "release": "2019.06.18",
                                 },
                                 "value": {
                                     "sval": "CCC(CC)COC(=O)C(C)NP(=O)(OCC1C(C(C(O1)(C#N)C2=CC=C3N2N=CN=C3N)O)O)OC4=CC=CC=C4"
-                                }
+                                },
                             },
                             {
                                 "urn": {
@@ -70,14 +70,14 @@ class CompoundsListSchema(BaseModel):
                                     "version": "2.1.5",
                                     "software": "OEChem",
                                     "source": "openeye.com",
-                                    "release": "2019.06.18"
+                                    "release": "2019.06.18",
                                 },
                                 "value": {
                                     "sval": "CSC1=NC2=NN=C(C(=O)N2N1)[N+](=O)[O-]"
-                                }
+                                },
                             },
                         ],
-                        "count": {}
+                        "count": {},
                     },
                     {
                         "id": {},
@@ -95,14 +95,14 @@ class CompoundsListSchema(BaseModel):
                                     "version": "2.1.5",
                                     "software": "OEChem",
                                     "source": "openeye.com",
-                                    "release": "2019.06.18"
+                                    "release": "2019.06.18",
                                 },
                                 "value": {
                                     "sval": "CCS(=O)(=O)N1CC(C1)(CC#N)N2C=C(C=N2)C3=C4C=CNC4=NC=N3"
-                                }
+                                },
                             },
                         ],
-                        "count": {}
+                        "count": {},
                     },
                 ]
             }

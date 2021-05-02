@@ -1,7 +1,7 @@
-import pytest
-from httpx import AsyncClient
 import fakeredis.aioredis
+import pytest
 from fastapi import status
+from httpx import AsyncClient
 
 from app.main import app
 
