@@ -47,11 +47,13 @@ async def health_check(settings: config.Settings = Depends(config.get_settings))
 async def add_smiles_to_hash(payload: CompoundsListSchema):
 
     mols = {}
+    # filter SMILES from compounds and add to molecule dict
     for compound in payload.PC_Compounds:
         mols.update(
             {x.value.sval: "SMILES" for x in compound.props if x.urn.label == "SMILES"}
         )
 
+    # save molecules to redis hash
     for k, v in mols.items():
         await app.state.redis.hset("mols:figers", k, v)
 
