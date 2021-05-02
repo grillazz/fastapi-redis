@@ -74,7 +74,7 @@ async def get_smiles_and_compare(compound: str):
         )
 
     return {
-        "number_of_smiles_to_compsoe": len(similarity),
+        "number_of_smiles_to_compare": len(similarity),
         "similarity": dict(
             sorted(similarity.items(), key=lambda item: item[1], reverse=True)
         ),
