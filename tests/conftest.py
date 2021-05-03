@@ -27,3 +27,5 @@ async def client():
         app.state.redis = await fakeredis.aioredis.create_redis_pool(server=server)
         app.state.mols_repo = MoleculesRepository(app.state.redis)
         yield ac
+        app.state.redis.close()
+        await app.state.redis.wait_closed()
