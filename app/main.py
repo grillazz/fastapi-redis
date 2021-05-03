@@ -13,7 +13,7 @@ app.include_router(smiles_router, prefix="/api/smiles")
 
 
 @app.on_event("startup")
-async def starup_event():
+async def startup_event():
     app.state.redis = await init_redis_pool()
     app.state.mols_repo = MoleculesRepository(app.state.redis)
 
