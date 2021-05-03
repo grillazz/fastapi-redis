@@ -1,4 +1,4 @@
-from fastapi import APIRouter
+from fastapi import APIRouter, status
 from rdkit.Chem import MolFromSmiles, RDKFingerprint
 from rdkit.DataStructs import FingerprintSimilarity
 
@@ -7,7 +7,7 @@ from app import main, schemas
 smiles_router = APIRouter()
 
 
-@smiles_router.post("/add-to-hash")
+@smiles_router.post("/add-to-hash", status_code=status.HTTP_201_CREATED)
 async def add(payload: schemas.CompoundsListSchema, redis_hash: str):
     """
 

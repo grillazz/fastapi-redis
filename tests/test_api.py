@@ -1,77 +1,38 @@
-import time
+import json
+import pathlib
 
 import fakeredis.aioredis
 import pytest
 from fastapi import status
 from httpx import AsyncClient
-from tx_ws_api.main import app
-from tx_ws_api.service.user_repository import UserRepository
+
+from app.main import app
+# decorate all tests with @pytest.mark.asyncio
+from app.service import MoleculesRepository
+
+pytestmark = pytest.mark.asyncio
+
+
+@pytest.fixture(autouse=True)
+def get_payload(request):
+    path = pathlib.Path(request.node.fspath.strpath)
+    file = path.with_name("PubChem_compound_text_covid-19_records.json")
+    with file.open() as compounds:
+        return json.load(compounds)
 
 
 @pytest.fixture
-async def test_app():
+async def client():
     async with AsyncClient(app=app, base_url="http://test") as ac:
         server = fakeredis.FakeServer()
         app.state.redis = await fakeredis.aioredis.create_redis_pool(server=server)
-        app.state.user_repo = UserRepository(app.state.redis)
+        app.state.mols_repo = MoleculesRepository(app.state.redis)
         yield ac
 
 
-@pytest.mark.asyncio
-async def test_root(test_app):
-    response = await test_app.get("/health-check")
-    assert response.status_code == status.HTTP_200_OK
-
-
-@pytest.mark.asyncio
-async def test_get_users(test_app):
-    response = await test_app.get("/get-users/dummy-business")
-    assert response.status_code == status.HTTP_404_NOT_FOUND
-    assert response.json() == {"detail": "User presence doesn't exist."}
-
-
-@pytest.mark.asyncio
-async def test_get_users_expired(test_app):
-    response = await test_app.get("/get-users-expired/dummy-business")
-    assert response.status_code == status.HTTP_200_OK
-    assert response.json() == {
-        "data": {},
-        "code": 200,
-        "message": "User presence retrieved successfully",
-    }
-
-
-@pytest.mark.asyncio
-async def test_set_user(test_app):
-    payload = {"user_id": 123, "business_id": "Fantastic-Four"}
-    response_post = await test_app.post("/set-user", json=payload)
-    assert response_post.status_code == status.HTTP_201_CREATED
-    response_get = await test_app.get("/get-users/Fantastic-Four")
-    assert response_get.status_code == status.HTTP_200_OK
-    assert response_get.json() == {
-        "data": {"123": "1"},
-        "code": 200,
-        "message": "User presence retrieved successfully",
-    }
-
-
-@pytest.mark.asyncio
-async def test_set_user_expired(test_app):
-    payload = {"business_id": "Fantastic-Four", "user_id": 123, "expire": 3}
-    response_post = await test_app.post("/set-user-expired", json=payload)
-    assert response_post.status_code == status.HTTP_201_CREATED
-    response_get = await test_app.get("/get-users-expired/Fantastic-Four")
-    assert response_get.status_code == status.HTTP_200_OK
-    assert response_get.json() == {
-        "data": ["123"],
-        "code": 200,
-        "message": "User presence retrieved successfully",
-    }
-    time.sleep(4)
-    response_get = await test_app.get("/get-users-expired/Fantastic-Four")
-    assert response_get.status_code == status.HTTP_200_OK
-    assert response_get.json() == {
-        "data": {},
-        "code": 200,
-        "message": "User presence retrieved successfully",
-    }
+async def test_set_and_compare(client, get_payload):
+    redis_hash = "covid-19"
+    response = await client.post(
+        f"/api/smiles/add-to-hash/?redis_hash={redis_hash}", json=get_payload
+    )
+    assert response.status_code == status.HTTP_201_CREATED
