@@ -13,6 +13,7 @@ class Settings(BaseSettings):
     redis_url: AnyUrl = os.environ.get("REDIS_URL", "redis://redis")
     redis_password: str = os.getenv("REDIS_PASSWORD", "redis_pass")
     redis_db: int = int(os.getenv("REDIS_DB", "0"))
+    redis_hash: str = os.getenv("REDIS_TEST_KEY", "covid-19-test")
     use_redis_sentinel: bool = (
         True if os.getenv("REDIS_USE_SENTINEL", "0") == "1" else False
     )

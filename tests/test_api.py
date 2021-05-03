@@ -1,15 +1,19 @@
 import pytest
 from fastapi import status
 
+from app import config
+
 # decorate all tests with @pytest.mark.asyncio
 pytestmark = pytest.mark.asyncio
+
+global_settings = config.Settings()
 
 
 @pytest.mark.parametrize(
     "response, status_code",
     (
         (
-            {"number_of_inserted_keys": 5, "hash_name": "covid-19-test"},
+            {"number_of_inserted_keys": 5, "hash_name": global_settings.redis_hash},
             status.HTTP_201_CREATED,
         ),
     ),
@@ -17,9 +21,9 @@ pytestmark = pytest.mark.asyncio
 async def test_set_fields_on_hash(
     client, get_payload, response: dict, status_code: int
 ):
-    redis_hash = "covid-19-test"
     post_response = await client.post(
-        f"/api/smiles/add-to-hash/?redis_hash={redis_hash}", json=get_payload
+        f"/api/smiles/add-to-hash/?redis_hash={global_settings.redis_hash}",
+        json=get_payload,
     )
     assert post_response.status_code == status_code
     assert response == post_response.json()
@@ -44,16 +48,15 @@ async def test_set_fields_on_hash(
     ),
 )
 async def test_compare_to_hash(client, get_payload, response: dict, status_code: int):
-    redis_hash = "covid-19-test"
     compound = "C([C@@H](C(=O)O)N)C(=O)N"
     await client.post(
-        f"/api/smiles/add-to-hash/?redis_hash={redis_hash}", json=get_payload
+        f"/api/smiles/add-to-hash/?redis_hash={global_settings.redis_hash}",
+        json=get_payload,
     )
 
     get_response = await client.get(
-        f"/api/smiles/compare-to-hash/?redis_hash={redis_hash}&compound={compound}"
+        f"/api/smiles/compare-to-hash/?redis_hash={global_settings.redis_hash}&compound={compound}"
     )
-    print(get_response.json())
     assert get_response.status_code == status_code
     assert response == get_response.json()
 
