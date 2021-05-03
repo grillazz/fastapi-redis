@@ -64,3 +64,5 @@ all moelcule which we alredy have with new one.
 This can be really quickly integrate with other projects with REST API and extended to deliver desired chem compound bakery.
 
 You can download example from COVID-19 Disease Map here on this link: https://pubchem.ncbi.nlm.nih.gov/#query=covid-19
+
+Project as whole is build on asyncio including REST, Redis connection and transactions and unit tests.
