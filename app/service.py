@@ -31,6 +31,7 @@ class MoleculesRepository:
 
     async def get_all(self, key: str):
         """
+        Get all the fields and values in a hash.
 
         :param key:
         :return: dict:
