@@ -1,8 +1,6 @@
 from aioredis import Redis, create_redis_pool
 
-
 from app import config
-
 
 global_settings = config.Settings()
 
