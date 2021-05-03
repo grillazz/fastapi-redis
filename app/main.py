@@ -1,4 +1,3 @@
-from aioredis import Redis, create_redis_pool
 from fastapi import Depends, FastAPI
 from rdkit.Chem import MolFromSmiles, RDKFingerprint
 from rdkit.DataStructs import FingerprintSimilarity
@@ -6,21 +5,12 @@ from rdkit.DataStructs import FingerprintSimilarity
 from app import config
 from app.schemas import CompoundsListSchema
 from app.service import MoleculesRepository
+from app.redis import init_redis_pool
 
 global_settings = config.Settings()
 
 
 app = FastAPI()
-
-
-async def init_redis_pool() -> Redis:
-    redis = await create_redis_pool(
-        global_settings.redis_url,
-        password=global_settings.redis_password,
-        encoding="utf-8",
-        db=global_settings.redis_db,
-    )
-    return redis
 
 
 @app.on_event("startup")
