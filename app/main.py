@@ -5,6 +5,7 @@ from rdkit.DataStructs import FingerprintSimilarity
 
 from app import config
 from app.schemas import CompoundsListSchema
+from app.service import MoleculesRepository
 
 global_settings = config.Settings()
 
@@ -25,6 +26,7 @@ async def init_redis_pool() -> Redis:
 @app.on_event("startup")
 async def starup_event():
     app.state.redis = await init_redis_pool()
+    app.state.mols_repo = MoleculesRepository(app.state.redis)
 
 
 @app.on_event("shutdown")
@@ -44,33 +46,30 @@ async def health_check(settings: config.Settings = Depends(config.get_settings))
 
 
 @app.post("/add-smiles-to-hash")
-async def add_canonical_smiles_to_hash(payload: CompoundsListSchema, redis_hash: str):
+async def add_smiles(payload: CompoundsListSchema, redis_hash: str):
 
-    mols = {}
-    # filter SMILES from compounds and add to molecule dict
-    for compound in payload.PC_Compounds:
-        mols.update(
-            {x.value.sval: "SMILES" for x in compound.props if x.urn.label == "SMILES"}
-        )
-
-    await app.state.redis.hmset_dict(redis_hash, mols)
-
-    hash_len = await app.state.redis.hlen(redis_hash)
-    return {
-        "number_of_inserted_keys": hash_len,
-        "hash_name": redis_hash
+    mols = {
+        x.value.sval: "SMILES"
+        for compound in payload.PC_Compounds
+        for x in compound.props
+        if x.urn.label == "SMILES"
     }
 
+    await app.state.mols_repo.set_multiple(redis_hash, mols)
 
-@app.get("/compare-smiles")
+    hash_len = await app.state.mols_repo.len(redis_hash)
+    return {"number_of_inserted_keys": hash_len, "hash_name": redis_hash}
+
+
+@app.get("/compare-smiles-to-hash")
 async def get_smiles_and_compare(compound: str, redis_hash: str):
     mol = RDKFingerprint(MolFromSmiles(compound))
 
     mol_hash = await app.state.redis.hgetall(redis_hash)
 
     similarity = {
-            smile: FingerprintSimilarity(RDKFingerprint(MolFromSmiles(smile)), mol)
-            for smile, value in mol_hash.items()
+        smile: FingerprintSimilarity(RDKFingerprint(MolFromSmiles(smile)), mol)
+        for smile, value in mol_hash.items()
     }
 
     return {

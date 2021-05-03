@@ -1,9 +1,9 @@
 import time
-import pytest
-from httpx import AsyncClient
-import fakeredis.aioredis
-from fastapi import status
 
+import fakeredis.aioredis
+import pytest
+from fastapi import status
+from httpx import AsyncClient
 from tx_ws_api.main import app
 from tx_ws_api.service.user_repository import UserRepository
 
