@@ -4,6 +4,7 @@ from pydantic import BaseModel, Field
 
 
 class PropsValueSchema(BaseModel):
+    # TODO: add validation for sval - check if it is correct SMILES
     sval: Optional[str] = None
 
 

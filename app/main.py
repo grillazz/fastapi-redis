@@ -47,7 +47,12 @@ async def health_check(settings: config.Settings = Depends(config.get_settings))
 
 @app.post("/add-smiles-to-hash")
 async def add_smiles(payload: CompoundsListSchema, redis_hash: str):
+    """
 
+    :param payload:
+    :param redis_hash:
+    :return:
+    """
     mols = {
         x.value.sval: "SMILES"
         for compound in payload.PC_Compounds
@@ -63,13 +68,19 @@ async def add_smiles(payload: CompoundsListSchema, redis_hash: str):
 
 @app.get("/compare-smiles-to-hash")
 async def get_smiles_and_compare(compound: str, redis_hash: str):
+    """
+
+    :param compound:
+    :param redis_hash:
+    :return:
+    """
     mol = RDKFingerprint(MolFromSmiles(compound))
 
-    mol_hash = await app.state.redis.hgetall(redis_hash)
+    mol_hash = await app.state.mols_repo.get_all(redis_hash)
 
     similarity = {
         smile: FingerprintSimilarity(RDKFingerprint(MolFromSmiles(smile)), mol)
-        for smile, value in mol_hash.items()
+        for smile in mol_hash.keys()
     }
 
     return {
