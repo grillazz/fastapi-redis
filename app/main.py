@@ -43,21 +43,18 @@ async def health_check(settings: config.Settings = Depends(config.get_settings))
     return {settings.web_server: settings.up, str(settings.redis_url): value}
 
 
-@app.post("/add-smiles")
+@app.post("/add-smiles-to-hash")
 async def add_canonical_smiles_to_hash(payload: CompoundsListSchema, redis_hash: str):
 
     mols = {}
     # filter SMILES from compounds and add to molecule dict
     for compound in payload.PC_Compounds:
         mols.update(
-            {x.value.sval: "SMILES" for x in compound.props if x.urn.label == "SMILES" and x.urn.name == "Canonical"}
+            {x.value.sval: "SMILES" for x in compound.props if x.urn.label == "SMILES"}
         )
 
-    # save molecules to redis hash
-    for k, v in mols.items():
-        await app.state.redis.hset(redis_hash, k, v)
+    await app.state.redis.hmset_dict(redis_hash, mols)
 
-    # TODO: test hset with k:v list as one insert
     hash_len = await app.state.redis.hlen(redis_hash)
     return {
         "number_of_inserted_keys": hash_len,
