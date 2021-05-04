@@ -1,8 +1,8 @@
-#fastapi-redis
+# fastapi-redis
 
 [![license](https://img.shields.io/github/license/grillazz/fastapi-redis)](https://github.com/grillazz/fastapi-redis/blob/main/LICENSE)
 
-###Project Description
+### Project Description
 Purpose of this showcase project is integrate modenrs NoSQL backend Redis with Async Python Framework as API for 
 
 Data set is comming from pub chem 
@@ -23,7 +23,7 @@ You can download example from COVID-19 Disease Map here on this link: https://pu
 Project as whole is build on python asyncio including REST, Redis connection and transactions and unit tests.
 
 
-###How to Setup
+### How to Setup
 To build , run and test and more ... use magic of make help to play with this project.
 ```shell
 make help
@@ -43,7 +43,7 @@ requirements         Refresh requirements.txt from pipfile.lock
 test-cov             Run project unit tests with coverage
 up                   Run project with compose
 ```
-###How to Play
+### How to Play
 1. Download exmaple JSON form PubChem database i.e. COVID-19 Disease Map here on this link:
    https://pubchem.ncbi.nlm.nih.gov/#query=covid-19
    
@@ -76,12 +76,11 @@ up                   Run project with compose
             "C1=C2C(=NC=NN2C(=C1)[C@]3([C@@H]([C@@H]([C@H](O3)COP(=O)(O)O)O)O)C#N)N": 0.8964264082374318,
             "C1=C2C(=NC=NN2C(=C1)[C@]3([C@@H]([C@@H]([C@H](O3)CO)O)O)C#N)N": 0.8740109555690809,
             "C1=C2C(=NC=NN2C(=C1)C3(C(C(C(O3)CO)O)O)C#N)N": 0.8740109555690809
-            ...
        }
    }
    ```
 
-###Backbone
+### Backbone
 Beside of using latest and greatest version of [Redis](https://redis.io/) with it robustness, powerfulness and speed
 there is [FastAPI](https://fastapi.tiangolo.com/) (modern, fast (high-performance), 
 web framework for building APIs with Python 3.6+ based on standard Python type hints.) already reviewed
