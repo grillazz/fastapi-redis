@@ -31,17 +31,17 @@ test-cov:	## Run project unit tests with coverage
 	docker-compose exec web pytest . -vv
 
 .PHONY: isort
-isort:  ## sort imports in project code
+isort:  ## Sort imports in project code
 	docker-compose exec web isort .
 
 .PHONY: black
-black:  ## apply black in project code
+black:  ## Apply black in project code
 	docker-compose exec web black --fast .
 
 .PHONY: mypy
-mypy:  ## run flake8 checks on project code
+mypy:  ## Run mypy checks on project code
 	docker-compose exec web mypy --ignore-missing-imports .
 
 .PHONY: flake8
-flake8:  ## run flake8 checks on project code
+flake8:  ## Flake8 checks on project code
 	docker-compose exec web flake8 .
