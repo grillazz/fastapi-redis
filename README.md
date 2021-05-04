@@ -1,14 +1,19 @@
-# fastapi-redis
+#fastapi-redis
 
 [![license](https://img.shields.io/github/license/grillazz/fastapi-redis)](https://github.com/grillazz/fastapi-redis/blob/main/LICENSE)
 
+###Project Description
 
+###How to Setup
 
+###How to Play
 
+###Backbone
+Beside of using latest and greatest version of [Redis](https://redis.io/) with it robustness, powerfulness and speed
+there is [FastAPI](https://fastapi.tiangolo.com/) (modern, fast (high-performance), 
+web framework for building APIs with Python 3.6+ based on standard Python type hints.) already reviewed
+on [thoughtworks](https://www.thoughtworks.com/radar/languages-and-frameworks?blipid=202104087)
 
-Working example for FastAPI with Redis.
-
-Using latest and greatest version of redis
 
 Data set is comming from pub chem 
 

@@ -1,6 +1,6 @@
 from fastapi import APIRouter, status
 from rdkit.Chem import MolFromSmiles, RDKFingerprint
-from rdkit.DataStructs import FingerprintSimilarity, CreateFromBitString
+from rdkit.DataStructs import FingerprintSimilarity, CreateFromBitString, BulkTanimotoSimilarity
 
 from app import main, schemas
 
