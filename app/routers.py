@@ -1,6 +1,6 @@
 from fastapi import APIRouter, status
 from rdkit.Chem import MolFromSmiles, RDKFingerprint
-from rdkit.DataStructs import FingerprintSimilarity
+from rdkit.DataStructs import FingerprintSimilarity, CreateFromBitString
 
 from app import main, schemas
 
@@ -16,7 +16,7 @@ async def add(payload: schemas.CompoundsListSchema, redis_hash: str):
     :return:
     """
     mols = {
-        x.value.sval: "SMILES"
+        x.value.sval: RDKFingerprint(MolFromSmiles(x.value.sval)).ToBitString()
         for compound in payload.PC_Compounds
         for x in compound.props
         if x.urn.label == "SMILES"
@@ -41,8 +41,8 @@ async def get_and_compare(compound: str, redis_hash: str):
     mol_hash = await main.app.state.mols_repo.get_all(redis_hash)
 
     similarity = {
-        smile: FingerprintSimilarity(RDKFingerprint(MolFromSmiles(smile)), mol)
-        for smile in mol_hash.keys()
+        smile: FingerprintSimilarity(CreateFromBitString(fp), mol)
+        for smile, fp in mol_hash.items()
     }
 
     return {
