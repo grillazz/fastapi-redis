@@ -11,8 +11,12 @@ up:	## Run project with compose
 	docker-compose up
 
 .PHONY: down
-down: ## Reset project containers with compose
+down: ## Stop project containers with compose
 	docker-compose down
+
+.PHONY: clean
+clean: ## Reset project containers with compose
+	docker-compose down -v --remove-orphans
 
 .PHONY: lock
 lock:	## Refresh pipfile.lock
@@ -22,26 +26,22 @@ lock:	## Refresh pipfile.lock
 requirements:	## Refresh requirements.txt from pipfile.lock
 	pipenv lock -r > requirements.txt
 
-.PHONY: clean
-clean: ## Clean Reset project containers with compose
-	docker-compose down -v --remove-orphans
-
 .PHONY: test-cov
-test-cov:	## Run project tests with coverage
+test-cov:	## Run project unit tests with coverage
 	docker-compose exec web pytest . -vv
 
 .PHONY: isort
-isort:  ## sort imports in project code.
+isort:  ## sort imports in project code
 	docker-compose exec web isort .
 
 .PHONY: black
-black:  ## apply black in project code.
+black:  ## apply black in project code
 	docker-compose exec web black --fast .
 
 .PHONY: mypy
-mypy:  ## apply black in project code.
+mypy:  ## run flake8 checks on project code
 	docker-compose exec web mypy --ignore-missing-imports .
 
 .PHONY: flake8
-flake8:  ## apply black in project code.
+flake8:  ## run flake8 checks on project code
 	docker-compose exec web flake8 .
