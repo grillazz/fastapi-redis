@@ -3,22 +3,22 @@
 [![license](https://img.shields.io/github/license/grillazz/fastapi-redis)](https://github.com/grillazz/fastapi-redis/blob/main/LICENSE)
 
 ### Project Description
-Purpose of this showcase project is integrate modenrs NoSQL backend Redis with Async Python Framework as API for 
+Purpose of this showcase project is integrate modern NoSQL backend Redis with Async Python Framework
+as API for chemical compounds extended analyze with [RDKit](https://github.com/rdkit/rdkit) Library.
 
-Data set is comming from pub chem 
+Data set coming from pub chem database and you can download example from COVID-19 Disease Map here on this link: https://pubchem.ncbi.nlm.nih.gov/#query=covid-19
 
+Pydantic schema was created for PubChem Compounds. You can replace it with your own schema to accept other source of SMILES.
 
-There is so mamy chem compud set but we all are noe in times where COVID-19 Pandemy is out there
-and we all want to knwo as much as possibile about cure... so that is my project background.
-Show power and robusteness of Redis with speed of FastAPI and funcinality of RDKit to deliver api 
-which allow quicky analyze chem molecules.
+There is many chemical compound sets. Now we all in days when COVID-19 Pandemic is out there 
+We all want to know as much as possible about best cure..., and it is my project background.
+Show power and robustness of Redis with speed of FastAPI and functionality of RDKit to deliver api 
+which allow quick analyze chem molecules.
 
-For puprose of this hackatoon i added only two cases to load checm molecules to redis cache and to compare 
-all moelcule which we alredy have with new one.
+For puprose of Redis 2021 Hack-a-toon I added only two cases to load chem molecules to redis cache and to compare 
+all molecules which we already have with new one.
 
-This can be really quickly integrate with other projects with REST API and extended to deliver desired chem compound bakery.
-
-You can download example from COVID-19 Disease Map here on this link: https://pubchem.ncbi.nlm.nih.gov/#query=covid-19
+This can be really quickly integrate with other services via REST API and extended to deliver desired chem compound bakery.
 
 Project as whole is build on python asyncio including REST, Redis connection and transactions and unit tests.
 
@@ -44,7 +44,7 @@ test-cov             Run project unit tests with coverage
 up                   Run project with compose
 ```
 ### How to Play
-1. Download exmaple JSON form PubChem database i.e. COVID-19 Disease Map here on this link:
+1. Download sample JSON form PubChem database i.e. COVID-19 Disease Map here on this link:
    https://pubchem.ncbi.nlm.nih.gov/#query=covid-19
    
 2. Add SMILES to Redis Hash with `/api/smiles/add-to-hash` endpoint
@@ -65,7 +65,7 @@ up                   Run project with compose
     curl --location --request GET 
    'http://0.0.0.0:8080/api/smiles/compare-to-hash?compound=CCC(CC)COC(=O)C(C)NP(=O)(OCC1C(C(C(O1)(C%23N)C2=CC=C3N2N=CN=C3N)O)O)OC4=CC=CC=C4&redis_hash=covid-19-canonical'
    ```
-   and get response like below with `201 Created`
+   and get response like below with `200 OK`
    ```json
    {
         "number_of_smiles_to_compare": 2364,
@@ -79,6 +79,8 @@ up                   Run project with compose
        }
    }
    ```
+4. For REST API Documentation please use: `http://0.0.0.0:8080/docs`
+    
 
 ### Backbone
 Beside of using latest and greatest version of [Redis](https://redis.io/) with it robustness, powerfulness and speed
@@ -86,4 +88,5 @@ there is [FastAPI](https://fastapi.tiangolo.com/) (modern, fast (high-performanc
 web framework for building APIs with Python 3.6+ based on standard Python type hints.) already reviewed
 on [thoughtworks](https://www.thoughtworks.com/radar/languages-and-frameworks?blipid=202104087)
 
+Hope you enjoy it.
 
