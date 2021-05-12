@@ -2,6 +2,9 @@
 
 [![license](https://img.shields.io/github/license/grillazz/fastapi-redis)](https://github.com/grillazz/fastapi-redis/blob/main/LICENSE)
 
+
+![fastapi-redis](/static/mols.jpg)
+
 ### Project Description
 Purpose of this showcase project is integrate modern NoSQL backend Redis with Async Python Framework
 as API for chemical compounds extended analyze with [RDKit](https://github.com/rdkit/rdkit) Library.
