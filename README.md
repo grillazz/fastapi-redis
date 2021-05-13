@@ -1,7 +1,7 @@
 # fastapi-redis
 
 [![license](https://img.shields.io/github/license/grillazz/fastapi-redis)](https://github.com/grillazz/fastapi-redis/blob/main/LICENSE)
-
+![visitors](https://visitor-badge.laobi.icu/badge?page_id=grillazz.fastapi-redis")
 
 ![fastapi-redis](/static/mols.jpg)
 
