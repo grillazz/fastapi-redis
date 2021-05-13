@@ -3,10 +3,6 @@
 
 ![developer](https://img.shields.io/badge/Dev-grillazz-green?style)
 ![language](https://img.shields.io/badge/language-python-blue?style)
-
-[comment]: <> (![stars]&#40;https://img.shields.io/github/stars/grillazz/fastapi-redis"&#41;)
-
-[comment]: <> (![forks]&#40;https://img.shields.io/github/forks/grillazz/fastapi-redis"&#41;)
 [![license](https://img.shields.io/github/license/grillazz/fastapi-redis)](https://github.com/grillazz/fastapi-redis/blob/main/LICENSE)
 ![visitors](https://visitor-badge.laobi.icu/badge?page_id=grillazz.fastapi-redis")
 
