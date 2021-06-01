@@ -26,9 +26,9 @@ lock:	## Refresh pipfile.lock
 requirements:	## Refresh requirements.txt from pipfile.lock
 	pipenv lock -r > requirements.txt
 
-.PHONY: test-cov
-test-cov:	## Run project unit tests with coverage
-	docker-compose exec web pytest . -vv
+.PHONY: test
+test:	## Run project unit tests with coverage
+	docker-compose exec web pytest .
 
 .PHONY: isort
 isort:  ## Sort imports in project code
