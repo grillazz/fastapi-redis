@@ -23,7 +23,7 @@ RUN set -ex && pip install pipenv --upgrade
 RUN set -ex && pip install --upgrade pip setuptools wheel
 
 ## Install dependencies
-RUN set -ex && pipenv install --system --sequential --ignore-pipfile --dev
+RUN set -ex && pipenv lock -r > req.txt && pip install -r req.txt
 
 FROM pipenv as final
 WORKDIR /source
