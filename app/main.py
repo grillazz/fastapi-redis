@@ -1,4 +1,4 @@
-from fastapi import Depends
+from fastapi import Depends, FastAPI
 
 from app import config
 from app.redis import init_redis_pool
