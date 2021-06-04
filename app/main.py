@@ -1,6 +1,4 @@
-from fastapi import Depends, FastAPI
-from fastapi import FastAPI, applications
-from fastapi.openapi.docs import get_swagger_ui_html
+from fastapi import Depends
 
 from app import config
 from app.redis import init_redis_pool
