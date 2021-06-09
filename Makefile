@@ -28,20 +28,20 @@ requirements:	## Refresh requirements.txt from pipfile.lock
 
 .PHONY: test
 test:	## Run project unit tests with coverage
-	docker-compose exec web pytest .
+	docker-compose exec web-mols pytest .
 
 .PHONY: isort
 isort:  ## Sort imports in project code
-	docker-compose exec web isort .
+	docker-compose exec web-mols isort .
 
 .PHONY: black
 black:  ## Apply black in project code
-	docker-compose exec web black --fast .
+	docker-compose exec web-mols black --fast .
 
 .PHONY: mypy
 mypy:  ## Run mypy checks on project code
-	docker-compose exec web mypy --ignore-missing-imports .
+	docker-compose exec web-mols mypy --ignore-missing-imports .
 
 .PHONY: flake8
 flake8:  ## Flake8 checks on project code
-	docker-compose exec web flake8 .
+	docker-compose exec web-mols flake8 .

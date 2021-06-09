@@ -1,7 +1,8 @@
 version: '3'
 
 services:
-  web:
+  web-mols:
+    container_name: web-mols
     build: .
     env_file:
       - .env
@@ -16,16 +17,15 @@ services:
     ports:
       - 8080:8080
     depends_on:
-      - redis
+      - redis-mols
 
-  redis:
+  redis-mols:
+    container_name: redis-mols
+    image: redis:latest
     restart: always
     env_file:
       - .env
-    image: redis:6.0.9-alpine
-    command: redis-server --requirepass ${REDIS_PASSWORD}
-    volumes:
-      - redisdata:/data
+    command: redis-server --port "${REDIS_PORT}" --requirepass ${REDIS_PASSWORD} --appendonly yes
     ports:
       - 6379:6379
 
