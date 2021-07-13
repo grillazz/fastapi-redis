@@ -1,5 +1,9 @@
 FROM ubuntu:groovy as builder
 
+ENV LANG="en_US.UTF-8"
+ENV LC_ALL="en_US.UTF-8"
+ENV LC_CTYPE="en_US.UTF-8"
+
 # Add universe repository
 RUN echo "deb http://archive.ubuntu.com/ubuntu groovy universe " >> /etc/apt/sources.list
 
@@ -22,10 +26,9 @@ RUN set -ex && pip install pipenv --upgrade
 ## Upgrde pip, setuptools and wheel
 RUN set -ex && pip install --upgrade pip setuptools wheel
 
+FROM pipenv as final
 ## Install dependencies
 RUN set -ex && pipenv lock -r > req.txt && pip install -r req.txt
-
-FROM pipenv as final
 WORKDIR /source
 COPY ./app/ /source/
 COPY ./tests/ /source/
