@@ -15,10 +15,8 @@ RUN apt-get install -y python3-rdkit librdkit1 rdkit-data
 
 
 FROM builder as pipenv
+# Instal pip
 RUN apt-get install -y python3-pip
-WORKDIR /pipfiles
-COPY Pipfile Pipfile
-COPY Pipfile.lock Pipfile.lock
 
 ## Install pipenv
 RUN set -ex && pip install pipenv --upgrade
@@ -28,6 +26,9 @@ RUN set -ex && pip install --upgrade pip setuptools wheel
 
 FROM pipenv as final
 ## Install dependencies
+WORKDIR /pipfiles
+COPY Pipfile Pipfile
+COPY Pipfile.lock Pipfile.lock
 RUN set -ex && pipenv lock -r > req.txt && pip install -r req.txt
 WORKDIR /source
 COPY ./app/ /source/
