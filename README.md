@@ -12,7 +12,7 @@
 Purpose of this showcase project is integrate modern NoSQL backend Redis with Async Python Framework
 as API for chemical compounds extended analyze with [RDKit](https://github.com/rdkit/rdkit) Library.
 
-Data set coming from pub chem database and you can download example from COVID-19 Disease Map here on this link: https://pubchem.ncbi.nlm.nih.gov/#query=covid-19
+Data set coming from pub chem database, and you can download example from COVID-19 Disease Map here on this link: https://pubchem.ncbi.nlm.nih.gov/#query=covid-19
 
 Pydantic schema was created for PubChem Compounds. You can replace it with your own schema to accept other source of SMILES.
 
@@ -21,7 +21,7 @@ We all want to know as much as possible about best cure..., and it is my project
 Show power and robustness of Redis with speed of FastAPI and functionality of RDKit to deliver api 
 which allow quick analyze chem molecules.
 
-For puprose of Redis 2021 Hack-a-toon I added only two cases to load chem molecules to redis cache and to compare 
+For now, I added only two cases to load chem molecules to redis cache and to compare 
 all molecules which we already have with new one.
 
 This can be really quickly integrate with other services via REST API and extended to deliver desired chem compound bakery.
