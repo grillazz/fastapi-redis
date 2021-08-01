@@ -1,11 +1,11 @@
-FROM ubuntu:groovy as builder
+FROM ubuntu:hirsute as builder
 
 ENV LANG="en_US.UTF-8"
 ENV LC_ALL="en_US.UTF-8"
 ENV LC_CTYPE="en_US.UTF-8"
 
 # Add universe repository
-RUN echo "deb http://archive.ubuntu.com/ubuntu groovy universe " >> /etc/apt/sources.list
+RUN echo "deb http://archive.ubuntu.com/ubuntu hirsute universe " >> /etc/apt/sources.list
 
 RUN apt-get update
 RUN apt-get upgrade -y
