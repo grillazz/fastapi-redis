@@ -20,8 +20,7 @@ async def startup_event():
 
 @app.on_event("shutdown")
 async def shutdown_event():
-    app.state.redis.close()
-    await app.state.redis.wait_closed()
+    await app.state.redis.close()
 
 
 @app.get("/health-check")
