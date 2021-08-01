@@ -8,7 +8,7 @@ from app.service import MoleculesRepository
 global_settings = config.Settings()
 
 
-app = FastAPI(title="ChemCompoundsAPI", version="0.1")
+app = FastAPI(title="ChemCompoundsAPI", version="0.2")
 app.include_router(smiles_router, prefix="/api/smiles")
 
 
