@@ -9,7 +9,7 @@
 ![fastapi-redis](/static/mols.jpg)
 
 ### Project Description
-Purpose of this showcase project is integrate modern NoSQL backend Redis with Async Python Framework
+Purpose of this showcase project is integrate modern NoSQL backend Redis with FastAPI Python Framework
 as API for chemical compounds extended analyze with [RDKit](https://github.com/rdkit/rdkit) Library.
 
 Data set coming from pub chem database, and you can download example from COVID-19 Disease Map here on this link: https://pubchem.ncbi.nlm.nih.gov/#query=covid-19
@@ -21,12 +21,12 @@ We all want to know as much as possible about best cure..., and it is my project
 Show power and robustness of Redis with speed of FastAPI and functionality of RDKit to deliver api 
 which allow quick analyze chem molecules.
 
-For now, I added only two cases to load chem molecules to redis cache and to compare 
+For now, project has only two cases to load chem molecules to redis cache and compare 
 all molecules which we already have with new one.
 
 This can be really quickly integrate with other services via REST API and extended to deliver desired chem compound bakery.
 
-Project as whole is build on python asyncio including REST, Redis connection and transactions and unit tests.
+Project as whole is build on FastAPI framework, Python 3.8, Redis.
 
 
 ### How to Setup
@@ -92,7 +92,9 @@ up                   Run project with compose
 Beside of using latest and greatest version of [Redis](https://redis.io/) with it robustness, powerfulness and speed
 there is [FastAPI](https://fastapi.tiangolo.com/) (modern, fast (high-performance), 
 web framework for building APIs with Python 3.6+ based on standard Python type hints.) already reviewed
-on [thoughtworks](https://www.thoughtworks.com/radar/languages-and-frameworks?blipid=202104087)
+on [thoughtworks](https://www.thoughtworks.com/radar/languages-and-frameworks?blipid=202104087).
+[Aioredis 2.0](https://aioredis.readthedocs.io/en/latest/) is already implemented as redis client python async library.
+
 
 Hope you enjoy it.
 

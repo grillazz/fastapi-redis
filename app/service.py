@@ -18,7 +18,7 @@ class MoleculesRepository:
         :param smiles:
         :return:
         """
-        return await self._redis.hmset_dict(key, smiles)
+        return await self._redis.hmset(key, smiles)
 
     async def len(self, key: str):
         """

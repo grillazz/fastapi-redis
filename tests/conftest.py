@@ -1,11 +1,12 @@
 import json
 import pathlib
 
-import fakeredis.aioredis
+# import fakeredis.aioredis
 import pytest
 from httpx import AsyncClient
 
 from app.main import app
+from app.redis import init_redis_pool
 from app.service import MoleculesRepository
 
 # decorate all tests with @pytest.mark.asyncio
@@ -23,9 +24,8 @@ def get_payload(request):
 @pytest.fixture
 async def client():
     async with AsyncClient(app=app, base_url="http://test") as ac:
-        server = fakeredis.FakeServer()
-        app.state.redis = await fakeredis.aioredis.create_redis_pool(server=server)
+        app.state.redis = await init_redis_pool()
         app.state.mols_repo = MoleculesRepository(app.state.redis)
         yield ac
-        app.state.redis.close()
-        await app.state.redis.wait_closed()
+        await app.state.redis.close()
+

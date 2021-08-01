@@ -18,7 +18,6 @@ pytest-asyncio = "*"
 pytest-cov = "*"
 httpx = "*"
 aioredis = "*"
-fakeredis = "*"
 
 [requires]
 python_version = "3.8"
