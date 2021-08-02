@@ -28,4 +28,3 @@ async def client():
         app.state.mols_repo = MoleculesRepository(app.state.redis)
         yield ac
         await app.state.redis.close()
-
