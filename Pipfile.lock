@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "5f61105bf494879d2460072dea8ac13b2235322d22e7a9359e3134e95530878f"
+            "sha256": "a94c0ee8db5b51d112d36ef6707b169090c9c5446202b25d4f7d4842f42560ad"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -77,6 +77,13 @@
             ],
             "markers": "python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2, 3.3, 3.4'",
             "version": "==21.2.0"
+        },
+        "autoflake": {
+            "hashes": [
+                "sha256:61a353012cff6ab94ca062823d1fb2f692c4acda51c76ff83a8d77915fba51ea"
+            ],
+            "index": "pypi",
+            "version": "==1.4"
         },
         "backcall": {
             "hashes": [
@@ -179,7 +186,7 @@
                 "sha256:f0b278ce10936db1a37e6954e15a3730bea96a0997c26d7fee88e6c396c2086d",
                 "sha256:f11642dddbb0253cc8853254301b51390ba0081750a8ac03f20ea8103f0c56b6"
             ],
-            "markers": "python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2, 3.3, 3.4' and python_version < '4'",
+            "markers": "python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2, 3.3, 3.4' and python_version < '4.0'",
             "version": "==5.5"
         },
         "decorator": {
@@ -199,11 +206,11 @@
         },
         "fastapi": {
             "hashes": [
-                "sha256:c9256a89b0436223b45f53fe3a39b178f3da6be5841a2c59deedff4b676d003f",
-                "sha256:f4dba2596b1e0a1f962834c3b9ec4291a7aec387a1031c6c2e25bf239d27fd0f"
+                "sha256:6ea2286e439c4ced7cce2b2862c25859601bf327a515c12dd6e431ef5d49d12f",
+                "sha256:d3e3c0ac35110efb22ee3ed28201cf32f9d11a9a0e52d7dd676cad25f5219523"
             ],
             "index": "pypi",
-            "version": "==0.68.0"
+            "version": "==0.65.3"
         },
         "flake8": {
             "hashes": [
@@ -212,6 +219,22 @@
             ],
             "index": "pypi",
             "version": "==3.9.2"
+        },
+        "flake8-fastapi": {
+            "hashes": [
+                "sha256:aa004b3813bf97088dc0dc273f63cd04972251eb4a6964f7ec9d2c264c922a84",
+                "sha256:c3bce2c282bf6565011cc0c08618a155f9afe52ba2847185d636a8eb7f67bc5a"
+            ],
+            "index": "pypi",
+            "version": "==0.6.1"
+        },
+        "flake8-plugin-utils": {
+            "hashes": [
+                "sha256:1fe43e3e9acf3a7c0f6b88f5338cad37044d2f156c43cb6b080b5f9da8a76f06",
+                "sha256:20fa2a8ca2decac50116edb42e6af0a1253ef639ad79941249b840531889c65a"
+            ],
+            "markers": "python_version >= '3.6' and python_version < '4.0'",
+            "version": "==1.3.2"
         },
         "gitdb": {
             "hashes": [
