@@ -1,10 +1,10 @@
 from fastapi import APIRouter, status
 from rdkit.Chem import MolFromSmiles, RDKFingerprint
-from rdkit.DataStructs import FingerprintSimilarity, CreateFromBitString, BulkTanimotoSimilarity
+from rdkit.DataStructs import CreateFromBitString, FingerprintSimilarity
 
 from app import main, schemas
 
-smiles_router = APIRouter()
+smiles_router = APIRouter(prefix="/smiles")
 
 
 @smiles_router.post("/add-to-hash", status_code=status.HTTP_201_CREATED)
@@ -40,14 +40,9 @@ async def get_and_compare(compound: str, redis_hash: str):
 
     mol_hash = await main.app.state.mols_repo.get_all(redis_hash)
 
-    similarity = {
-        smile: FingerprintSimilarity(CreateFromBitString(fp), mol)
-        for smile, fp in mol_hash.items()
-    }
+    similarity = {smile: FingerprintSimilarity(CreateFromBitString(fp), mol) for smile, fp in mol_hash.items()}
 
     return {
         "number_of_smiles_to_compare": len(similarity),
-        "similarity": dict(
-            sorted(similarity.items(), key=lambda item: item[1], reverse=True)
-        ),
+        "similarity": dict(sorted(similarity.items(), key=lambda item: item[1], reverse=True)),
     }

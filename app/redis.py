@@ -11,6 +11,6 @@ async def init_redis_pool() -> Redis:
         password=global_settings.redis_password,
         encoding="utf-8",
         db=global_settings.redis_db,
-        decode_responses=True
+        decode_responses=True,
     )
     return redis
