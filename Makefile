@@ -30,18 +30,20 @@ requirements:	## Refresh requirements.txt from pipfile.lock
 test:	## Run project unit tests with coverage
 	docker-compose exec web-mols pytest .
 
-.PHONY: isort
-isort:  ## Sort imports in project code
-	docker-compose exec web-mols isort .
 
-.PHONY: black
-black:  ## Apply black in project code
-	docker-compose exec web-mols black --fast .
+.PHONY: safety
+safety:	## Check project and dependencies with safety https://github.com/pyupio/safety
+	docker-compose run --rm app safety check
 
-.PHONY: mypy
-mypy:  ## Run mypy checks on project code
-	docker-compose exec web-mols mypy --ignore-missing-imports .
+.PHONY: lint
+lint:  ## Lint project code.
+	isort app tests --check
+	flake8 --config .flake8 app tests
+	mypy the_app tests
+	black app tests --line-length=120 --check --diff
 
-.PHONY: flake8
-flake8:  ## Flake8 checks on project code
-	docker-compose exec web-mols flake8 .
+.PHONY: format
+format:  ## Format project code.
+	isort app tests
+	autoflake --remove-all-unused-imports --recursive --remove-unused-variables --in-place app tests --exclude=__init__.py
+	black app tests --line-length=120
