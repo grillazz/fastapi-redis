@@ -26,7 +26,7 @@ all molecules which we already have with new one.
 
 This can be really quickly integrate with other services via REST API and extended to deliver desired chem compound bakery.
 
-Project as whole is build on FastAPI framework, Python 3.8, Redis.
+Project as whole is build on FastAPI framework, Python 3.9, Redis.
 
 
 ### How to Setup
@@ -36,17 +36,16 @@ make help
 ```
 and you receive below list:
 ```text
-black                Apply black in project code
 build                Build project with compose
 clean                Reset project containers with compose
 down                 Stop project containers with compose
-flake8               Flake8 checks on project code
+format               Format project code.
 help                 Show this help
-isort                Sort imports in project code
+lint                 Lint project code.
 lock                 Refresh pipfile.lock
-mypy                 Run mypy checks on project code
 requirements         Refresh requirements.txt from pipfile.lock
-test-cov             Run project unit tests with coverage
+safety               Check project and dependencies with safety https://github.com/pyupio/safety
+test                 Run project unit tests with coverage
 up                   Run project with compose
 ```
 ### How to Play
@@ -91,7 +90,7 @@ up                   Run project with compose
 ### Backbone
 Beside of using latest and greatest version of [Redis](https://redis.io/) with it robustness, powerfulness and speed
 there is [FastAPI](https://fastapi.tiangolo.com/) (modern, fast (high-performance), 
-web framework for building APIs with Python 3.6+ based on standard Python type hints.) already reviewed
+web framework for building APIs with Python 3.9+ based on standard Python type hints.) already reviewed
 on [thoughtworks](https://www.thoughtworks.com/radar/languages-and-frameworks?blipid=202104087).
 [Aioredis 2.0](https://aioredis.readthedocs.io/en/latest/) is already implemented as redis client python async library.
 
