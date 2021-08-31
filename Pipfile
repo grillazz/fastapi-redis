@@ -20,6 +20,7 @@ pytest-asyncio = "*"
 pytest-cov = "*"
 httpx = "*"
 aioredis = "*"
+rich = "*"
 
 [requires]
 python_version = "3.9"
