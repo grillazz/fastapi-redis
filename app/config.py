@@ -25,7 +25,7 @@ class Settings(BaseSettings):
     web_server: str = os.getenv("WEB_SERVER", "web_server")
 
 
-@lru_cache()
+@lru_cache
 def get_settings() -> BaseSettings:
     logger.info("Loading config settings from the environment...")
     return Settings()
