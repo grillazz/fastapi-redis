@@ -32,11 +32,11 @@ test:	## Run project unit tests with coverage
 
 .PHONY: py-upgrade
 py-upgrade:	## Upgrade project py files with pyupgrade library for python version 3.9
-	docker-compose run --rm app pyupgrade --py39-plus `find . -name "*.py"`
+	docker-compose run --rm web-mols pyupgrade --py39-plus `find . -name "*.py"`
 
 .PHONY: safety
 safety:	## Check project and dependencies with safety https://github.com/pyupio/safety
-	docker-compose run --rm app safety check
+	docker-compose run --rm web-mols safety check
 
 .PHONY: lint
 lint:  ## Lint project code.
