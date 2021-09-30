@@ -21,6 +21,7 @@ pytest-cov = "*"
 httpx = "*"
 aioredis = "*"
 rich = "*"
+pyupgrade = "*"
 
 [requires]
 python_version = "3.9"
