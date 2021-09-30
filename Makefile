@@ -30,6 +30,9 @@ requirements:	## Refresh requirements.txt from pipfile.lock
 test:	## Run project unit tests with coverage
 	docker-compose exec web-mols pytest .
 
+.PHONY: py-upgrade
+py-upgrade:	## Upgrade project py files with pyupgrade library for python version 3.9
+	docker-compose run --rm app pyupgrade --py39-plus `find . -name "*.py"`
 
 .PHONY: safety
 safety:	## Check project and dependencies with safety https://github.com/pyupio/safety
