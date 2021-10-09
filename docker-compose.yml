@@ -1,8 +1,8 @@
 version: '3'
 
 services:
-  web-mols:
-    container_name: web-mols
+  chem-molecules:
+    container_name: chem-molecules
     build: .
     env_file:
       - .env
@@ -19,8 +19,8 @@ services:
     depends_on:
       - redis-mols
 
-  redis-mols:
-    container_name: redis-mols
+  redis-chem:
+    container_name: redis-chem
     image: redis:latest
     restart: always
     env_file:
