@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
 
     services:
-      redis-chem:
+      redis:
         image: redis:latest
         ports:
           - 6379:6379
@@ -35,7 +35,7 @@ jobs:
           UP: up
           DOWN: down
           WEB_SERVER: web_server
-          REDIS_URL: redis://redis-chem
+          REDIS_URL: redis://127.0.0.1
           REDIS_DB: 0
           REDIS_TEST_KEY: covid-19-test
           REDIS_PORT: 6379
