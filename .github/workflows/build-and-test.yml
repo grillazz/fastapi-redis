@@ -1,0 +1,41 @@
+
+name: Unit Tests
+
+on:
+  pull_request:
+    branches: [ develop, main ]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    services:
+      redis:
+        image: redis:latest
+        ports:
+          - 6379:6379
+    steps:
+      - uses: actions/checkout@v1
+      - name: Set up Python 3.9
+        uses: actions/setup-python@v1
+        with:
+          python-version: 3.9
+      - name: Install pipenv
+        run: pip install pipenv
+      - name: Install required libs
+        run: pipenv lock -r > req.txt && pip install -r req.txt
+      - name: Install rdkit library
+        run: pip install rdkit-pypi==2021.3.1
+      - name: Run tests
+        run: pytest
+        env:
+          PYTHONDONTWRITEBYTECODE: 1
+          PYTHONUNBUFFERED: 1
+          ENVIRONMENT: test
+          TESTING: 0
+          UP: up
+          DOWN: down
+          WEB_SERVER: web_server
+          REDIS_URL: redis://127.0.0.1
+          REDIS_DB: 0
+          REDIS_TEST_KEY: covid-19-test
+          REDIS_PORT: 6379

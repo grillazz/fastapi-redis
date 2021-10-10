@@ -17,7 +17,7 @@ services:
     ports:
       - 8080:8080
     depends_on:
-      - redis-mols
+      - redis-chem
 
   redis-chem:
     container_name: redis-chem
@@ -25,7 +25,6 @@ services:
     restart: always
     env_file:
       - .env
-    command: redis-server --port "${REDIS_PORT}" --requirepass ${REDIS_PASSWORD} --appendonly yes
     ports:
       - 6379:6379
 
