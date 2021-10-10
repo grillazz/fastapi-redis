@@ -10,7 +10,7 @@ jobs:
 
     services:
       redis-chem:
-        image: Dockerfile
+        image: redis:latest
         ports:
           - 6379:6379
     steps:
