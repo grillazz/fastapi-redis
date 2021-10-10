@@ -1,0 +1,1 @@
+redis-server --port "${REDIS_PORT}" --requirepass ${REDIS_PASSWORD} --appendonly yes
