@@ -11,9 +11,6 @@ jobs:
     services:
       redis-chem:
         image: Dockerfile
-        env:
-          REDIS_PORT: 6379
-          REDIS_PASSWORD: redis_secret
         ports:
           - 6379:6379
     steps:
@@ -39,7 +36,6 @@ jobs:
           DOWN: down
           WEB_SERVER: web_server
           REDIS_URL: redis://redis-chem
-          REDIS_PASSWORD: redis_secret
           REDIS_DB: 0
           REDIS_TEST_KEY: covid-19-test
           REDIS_PORT: 6379

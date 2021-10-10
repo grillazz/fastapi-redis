@@ -25,7 +25,6 @@ services:
     restart: always
     env_file:
       - .env
-    command: redis-server --port "${REDIS_PORT}" --requirepass ${REDIS_PASSWORD} --appendonly yes
     ports:
       - 6379:6379
 
