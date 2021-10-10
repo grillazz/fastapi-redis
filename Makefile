@@ -28,7 +28,7 @@ requirements:	## Refresh requirements.txt from pipfile.lock
 
 .PHONY: test
 test:	## Run project unit tests with coverage
-	docker-compose exec chem-molecules pytest .
+	docker-compose run --rm chem-molecules pytest .
 
 .PHONY: py-upgrade
 py-upgrade:	## Upgrade project py files with pyupgrade library for python version 3.9
