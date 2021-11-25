@@ -20,7 +20,7 @@ global_settings = config.Settings()
 )
 async def test_set_fields_on_hash(client, get_payload, response: dict, status_code: int):
     post_response = await client.post(
-        f"/smiles/add-to-hash/?redis_hash={global_settings.redis_hash}",
+        f"/smiles/add-to-hash?redis_hash={global_settings.redis_hash}",
         json=get_payload,
     )
     assert post_response.status_code == status_code
@@ -48,12 +48,12 @@ async def test_set_fields_on_hash(client, get_payload, response: dict, status_co
 async def test_compare_to_hash(client, get_payload, response: dict, status_code: int):
     compound = "C([C@@H](C(=O)O)N)C(=O)N"
     await client.post(
-        f"/smiles/add-to-hash/?redis_hash={global_settings.redis_hash}",
+        f"/smiles/add-to-hash?redis_hash={global_settings.redis_hash}",
         json=get_payload,
     )
 
     get_response = await client.get(
-        f"/smiles/compare-to-hash/?redis_hash={global_settings.redis_hash}&compound={compound}"
+        f"/smiles/compare-to-hash?redis_hash={global_settings.redis_hash}&compound={compound}"
     )
     assert get_response.status_code == status_code
     assert response == get_response.json()
