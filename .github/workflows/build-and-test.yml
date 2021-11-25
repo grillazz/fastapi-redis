@@ -15,16 +15,18 @@ jobs:
           - 6379:6379
     steps:
       - uses: actions/checkout@v1
-      - name: Set up Python 3.9
+      - name: Set up Python
         uses: actions/setup-python@v1
         with:
-          python-version: 3.9
+          python-version: 3.10
+      - name: UPgrade pip
+        run: pip install --upgrade pip
       - name: Install pipenv
         run: pip install pipenv
       - name: Install required libs
         run: pipenv lock -r > req.txt && pip install -r req.txt
       - name: Install rdkit library
-        run: pip install rdkit-pypi==2021.3.1
+        run: pip install rdkit-pypi==2021.9.2
       - name: Run tests
         run: pytest
         env:
