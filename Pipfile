@@ -22,6 +22,7 @@ httpx = "*"
 aioredis = "*"
 rich = "*"
 pyupgrade = "*"
+wurlitzer = "*"
 
 [requires]
 python_version = "3.10"
