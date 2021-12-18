@@ -4,7 +4,7 @@ from functools import lru_cache
 from rich.console import Console
 from rich.logging import RichHandler
 
-console = Console(color_system="256", width=200, style="blue")
+console = Console(color_system="256", width=150, style="blue")
 
 
 @lru_cache
