@@ -15,7 +15,7 @@ bandit = "*"
 autoflake = "*"
 fastapi = "*"
 uvicorn = {extras = ["standard"], version = "*"}
-pydantic = "*"
+pydantic = "~=1.9.0a2"
 pytest-asyncio = "*"
 pytest-cov = "*"
 httpx = "*"
