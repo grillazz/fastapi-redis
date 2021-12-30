@@ -10,28 +10,25 @@
 ![fastapi-redis](/static/mols.jpg)
 
 ### Project Description
-Purpose of this showcase project is integrate modern NoSQL backend Redis with FastAPI Python Framework
+Purpose of this showcase is integrate modern NoSQL backend Redis with FastAPI Python Framework
 as API for chemical compounds extended analyze with [RDKit](https://github.com/rdkit/rdkit) Library.
 
 Data set coming from pub chem database, and you can download example from COVID-19 Disease Map here on this link: https://pubchem.ncbi.nlm.nih.gov/#query=covid-19
 
 Pydantic schema was created for PubChem Compounds. You can replace it with your own schema to accept other source of SMILES.
 
-There is many chemical compound sets. Now we all in days when COVID-19 Pandemic is out there 
-We all want to know as much as possible about best cure..., and it is my project background.
+There is many chemical compound sets. Now we all in days when COVID-19 Pandemic is out there.
+We all want to know as much as possible about best cure...,and it is my project background.
 Show power and robustness of Redis with speed of FastAPI and functionality of RDKit to deliver api 
 which allow quick analyze chem molecules.
 
-For now, project has only two cases to load chem molecules to redis cache and compare 
-all molecules which we already have with new one.
-
-This can be really quickly integrate with other services via REST API and extended to deliver desired chem compound bakery.
+This showcase can be quickly integrated with other services via REST API and extended to deliver desired chem compound bakery.
 
 Project as whole is build on FastAPI framework, Python 3.10, Redis.
 
 
 ### How to Setup
-To build , run and test and more ... use magic of make help to play with this project.
+To build, run and test and more... use magic of make.
 ```shell
 make help
 ```
@@ -50,12 +47,12 @@ test                 Run project unit tests with coverage
 up                   Run project with compose
 ```
 ### How to Play
-1. Download sample JSON form PubChem database i.e. COVID-19 Disease Map here on this link:
+1. Download sample JSON from PubChem database i.e. COVID-19 Disease Map here on this link:
    https://pubchem.ncbi.nlm.nih.gov/#query=covid-19
    
-2. Add SMILES to Redis Hash with `/api/smiles/add-to-hash` endpoint
+2. Add SMILES to Redis Hash with `/smiles/add-to-hash` endpoint
     ```shell
-    curl --location --request POST 'http://0.0.0.0:8080/api/smiles/add-to-hash?redis_hash=covid-19-canonical' \
+    curl --location --request POST 'http://0.0.0.0:8080/smiles/add-to-hash?redis_hash=covid-19-canonical' \
     --header 'Content-Type: application/json' \
     --data-binary '@/fastapi-redis/PubChem_compound_text_covid-19_records.json'
     ```
@@ -69,7 +66,7 @@ up                   Run project with compose
 3. Compare SMILES code to list loaded in previous step on Redis Hash with `/api/smiles/compare-to-hash` endpoint
     ```shell
     curl --location --request GET 
-   'http://0.0.0.0:8080/api/smiles/compare-to-hash?compound=CCC(CC)COC(=O)C(C)NP(=O)(OCC1C(C(C(O1)(C%23N)C2=CC=C3N2N=CN=C3N)O)O)OC4=CC=CC=C4&redis_hash=covid-19-canonical'
+   'http://0.0.0.0:8080/smiles/compare-to-hash?compound=CCC(CC)COC(=O)C(C)NP(=O)(OCC1C(C(C(O1)(C%23N)C2=CC=C3N2N=CN=C3N)O)O)OC4=CC=CC=C4&redis_hash=covid-19-canonical'
    ```
    and get response like below with `200 OK`
    ```json
