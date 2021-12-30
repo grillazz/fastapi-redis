@@ -1,0 +1,82 @@
+{
+	"info": {
+		"_postman_id": "42b742c0-8b40-44d6-b4c7-6de4e3050b3d",
+		"name": "fastapi-redis",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "API",
+			"item": [
+				{
+					"name": "Add SMILES to Redis Hash",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "file",
+							"file": {
+								"src": "/Users/kuba/Downloads/PubChem_compound_text_covid-19_records.json"
+							}
+						},
+						"url": {
+							"raw": "http://0.0.0.0:8080/smiles/add-to-hash?redis_hash=covid-19",
+							"protocol": "http",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "8080",
+							"path": [
+								"smiles",
+								"add-to-hash"
+							],
+							"query": [
+								{
+									"key": "redis_hash",
+									"value": "covid-19"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Compare SMILES code to Redis Hash",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://0.0.0.0:8080/smiles/compare-to-hash?compound=CCC(CC)COC(=O)[C@H](C)N[P@](=O)(OC[C@@H]1[C@H]([C@H]([C@](O1)(C%23N)C2=CC=C3N2N=CN=C3N)O)O)OC4=CC=CC=C4&redis_hash=covid-19",
+							"protocol": "http",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "8080",
+							"path": [
+								"smiles",
+								"compare-to-hash"
+							],
+							"query": [
+								{
+									"key": "compound",
+									"value": "CCC(CC)COC(=O)[C@H](C)N[P@](=O)(OC[C@@H]1[C@H]([C@H]([C@](O1)(C%23N)C2=CC=C3N2N=CN=C3N)O)O)OC4=CC=CC=C4"
+								},
+								{
+									"key": "redis_hash",
+									"value": "covid-19"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
