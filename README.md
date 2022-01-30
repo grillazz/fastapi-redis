@@ -84,6 +84,7 @@ up                   Run project with compose
    ```
 4. For REST API Documentation please use: `http://0.0.0.0:8080/docs`
     
+5. Finally, you can use postman collection here [Postman Collection](https://github.com/grillazz/fastapi-redis/blob/main/postman/fastapi-redis.postman_collection.json)
 
 ### Backbone
 Beside of using latest and greatest version of [Redis](https://redis.io/) with it robustness, powerfulness and speed
