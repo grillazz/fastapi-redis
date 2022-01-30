@@ -3,8 +3,7 @@ from fastapi import status
 
 from app import config
 
-# decorate all tests with @pytest.mark.asyncio
-pytestmark = pytest.mark.asyncio
+pytestmark = pytest.mark.anyio
 
 global_settings = config.Settings()
 
