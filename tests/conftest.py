@@ -1,7 +1,6 @@
 import json
 import pathlib
 
-# import fakeredis.aioredis
 import pytest
 from httpx import AsyncClient
 
@@ -9,8 +8,14 @@ from app.main import app
 from app.redis import init_redis_pool
 from app.service import MoleculesRepository
 
-# decorate all tests with @pytest.mark.asyncio
-pytestmark = pytest.mark.asyncio
+
+@pytest.fixture(
+    params=[
+        pytest.param(("asyncio", {"use_uvloop": True}), id="asyncio+uvloop"),
+    ]
+)
+def anyio_backend(request):
+    return request.param
 
 
 @pytest.fixture(autouse=True)
