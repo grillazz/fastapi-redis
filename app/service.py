@@ -10,7 +10,7 @@ class MoleculesRepository:
     async def set_multiple(self, key: str, smiles: dict):
         """
         Set multiple hash fields to multiple values.
-        dict can be passed as first positional argument:
+        dict can be passed as mapping kwarg:
         Hash field is molecule canonical representation
         Hash value is molecule type i.e. SMILES.
 
@@ -18,7 +18,7 @@ class MoleculesRepository:
         :param smiles:
         :return:
         """
-        return await self._redis.hmset(key, smiles)
+        return await self._redis.hset(key, mapping=smiles)
 
     async def len(self, key: str):
         """
