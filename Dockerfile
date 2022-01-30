@@ -12,7 +12,7 @@ RUN set -ex && pip install pipenv --upgrade
 
 # Install dependencies
 RUN set -ex && pipenv lock -r > req.txt && pip install -r req.txt
-RUN set -ex && pip install rdkit-pypi==2021.9.2
+RUN set -ex && pip install rdkit-pypi==2021.9.4
 
 FROM builder as final
 WORKDIR /source
