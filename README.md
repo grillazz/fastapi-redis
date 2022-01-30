@@ -10,17 +10,17 @@
 ![fastapi-redis](/static/mols.jpg)
 
 ### Project Description
-Purpose of this showcase is integrate modern NoSQL backend Redis with FastAPI Python Framework
+Purpose of this showcase is integrate modern NoSQL backend Redis with FastAPI Python ASGI Framework
 as API for chemical compounds extended analyze with [RDKit](https://github.com/rdkit/rdkit) Library.
 
 Data set coming from pub chem database, and you can download example from COVID-19 Disease Map here on this link: https://pubchem.ncbi.nlm.nih.gov/#query=covid-19
 
 Pydantic schema was created for PubChem Compounds. You can replace it with your own schema to accept other source of SMILES.
 
-There is many chemical compound sets. Now we all in days when COVID-19 Pandemic is out there.
-We all want to know as much as possible about best cure...,and it is my project background.
+There is many chemical compound sets. Now we are all in days when COVID-19 Pandemic is out there.
+We all want to know as much as possible about best cure..., and it is my project background.
 Show power and robustness of Redis with speed of FastAPI and functionality of RDKit to deliver api 
-which allow quick analyze chem molecules.
+which allow fast analyze chem molecules.
 
 This showcase can be quickly integrated with other services via REST API and extended to deliver desired chem compound bakery.
 
@@ -84,6 +84,7 @@ up                   Run project with compose
    ```
 4. For REST API Documentation please use: `http://0.0.0.0:8080/docs`
     
+5. Finally, you can use postman collection here [Postman Collection](https://github.com/grillazz/fastapi-redis/blob/main/postman/fastapi-redis.postman_collection.json)
 
 ### Backbone
 Beside of using latest and greatest version of [Redis](https://redis.io/) with it robustness, powerfulness and speed
@@ -91,7 +92,7 @@ there is [FastAPI](https://fastapi.tiangolo.com/) (modern, fast (high-performanc
 web framework for building APIs with Python 3.10+ based on standard Python type hints.) already reviewed
 on [thoughtworks](https://www.thoughtworks.com/radar/languages-and-frameworks?blipid=202104087).
 [Aioredis 2.0](https://aioredis.readthedocs.io/en/latest/) is already implemented as redis client python async library.
-
+Special thanks going to maintainers of [rdkit-pypi](https://github.com/kuelumbus/rdkit-pypi).
 
 Hope you enjoy it.
 
