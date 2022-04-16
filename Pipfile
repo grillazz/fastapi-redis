@@ -4,11 +4,6 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-fastapi = "0.75.1"
-redis = "4.2.2"
-uvicorn = {extras = ["standard"], version = "*"}
-httpx = "*"
-
 icecream = "*"
 ipython = "*"
 isort = "*"
@@ -18,8 +13,13 @@ flake8-fastapi = "*"
 black = "*"
 bandit = "*"
 autoflake = "*"
+fastapi = "*"
+uvicorn = {extras = ["standard"], version = "*"}
+pydantic = "*"
 pytest-cov = "*"
 pytest-asyncio = "*"
+httpx = "*"
+redis = "*"
 rich = "*"
 pyupgrade = "*"
 wurlitzer = "*"
