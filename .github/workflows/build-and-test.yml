@@ -6,7 +6,8 @@ on:
     branches:
       - main
   pull_request:
-    types: [opened, synchronize]
+    branches:
+      - feature/grillazz/redis-py
 
 jobs:
   build:
