@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "6ae275299185cd211de4186579f0aa73a87051572453e3ccac203aa3b7c55118"
+            "sha256": "e5d6ee8a6a42c0972b12ec70d90dd1fa566a47713eb174245a628563de30d6cf"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -232,14 +232,6 @@
             ],
             "index": "pypi",
             "version": "==4.0.1"
-        },
-        "flake8-fastapi": {
-            "hashes": [
-                "sha256:b18dde9c306e52a9e3ed68addafcfd8680a0b6df9045b78f8b4326eeb1d44c1e",
-                "sha256:b6dea32bc27941a9a35f97bd016be98853b2697523928c1b6b137216719fc400"
-            ],
-            "index": "pypi",
-            "version": "==0.1.0"
         },
         "h11": {
             "hashes": [
@@ -716,7 +708,7 @@
                 "sha256:939de3e7a6161af0c887ef91b7d41a53e7c5a1ca976325f429cb46ea9bc30ecc",
                 "sha256:de526c12914f0c550d15924c62d72abc48d6fe7364aa87328337a31007fe8a4f"
             ],
-            "markers": "python_version < '3.11'",
+            "markers": "python_version >= '3.7'",
             "version": "==2.0.1"
         },
         "traitlets": {
