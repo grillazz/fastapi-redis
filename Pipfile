@@ -14,7 +14,6 @@ fastapi = "*"
 uvicorn = {extras = ["standard"], version = "*"}
 pydantic = "*"
 pytest-cov = "*"
-pytest-asyncio = "*"
 httpx = "*"
 redis = "*"
 rich = "*"
