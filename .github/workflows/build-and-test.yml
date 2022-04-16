@@ -2,8 +2,12 @@
 name: Unit Tests
 
 on:
+  push:
+    branches:
+      - master
   pull_request:
-    branches: [ develop, main ]
+    types: [opened]
+
 jobs:
   build:
     runs-on: ubuntu-latest

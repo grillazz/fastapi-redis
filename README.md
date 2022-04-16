@@ -97,4 +97,4 @@ Special thanks going to maintainers of [rdkit-pypi](https://github.com/kuelumbus
 Hope you enjoy it.
 
 ### Change Log
-- 16 APR 2022 aioredis replaced wirth redis.asyncio
+- 16 APR 2022 aioredis replaced with redis.asyncio
