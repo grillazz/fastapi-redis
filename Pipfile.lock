@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "9b92ffdf0eaaeb01bdc1cd955ec200fb0eb34339afc921c6dafe61650787144f"
+            "sha256": "6b4d410b1dc169d30d5ffdaf6ad7f3c485571c9750f1700e06ef899024a8fd1f"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -432,7 +432,7 @@
                 "sha256:f5a64b64ddf4c99fe201ac2724daada8595ada0d102ab96d019c1555c2d6441d",
                 "sha256:f947352c3434e8b937e3aa8f96f47bdfe6d92779e44bb3f41e4c213ba6a32145"
             ],
-            "index": "pypi",
+            "markers": "python_full_version >= '3.6.1'",
             "version": "==1.9.0"
         },
         "pyflakes": {
@@ -481,14 +481,6 @@
                 "sha256:d92a187be61fe482e4fd675b6d52200e7be63a12b724abbf931a40ce4fa92938"
             ],
             "version": "==0.20.0"
-        },
-        "pyupgrade": {
-            "hashes": [
-                "sha256:6878116d364b72f0c0011dd62dfe96425041a5f753da298b6eacde0f9fd9c004",
-                "sha256:f45d4afb6ccdf7b0cea757958d0a11306324052668d9ff99d2bcb06bda46c00d"
-            ],
-            "index": "pypi",
-            "version": "==2.32.0"
         },
         "pyyaml": {
             "hashes": [
@@ -579,20 +571,12 @@
             "markers": "python_version >= '3.6'",
             "version": "==0.17.1"
         },
-        "tokenize-rt": {
-            "hashes": [
-                "sha256:08a27fa032a81cf45e8858d0ac706004fcd523e8463415ddf1442be38e204ea8",
-                "sha256:0d4f69026fed520f8a1e0103aa36c406ef4661417f20ca643f913e33531b3b94"
-            ],
-            "markers": "python_full_version >= '3.6.1'",
-            "version": "==4.2.1"
-        },
         "tomli": {
             "hashes": [
                 "sha256:939de3e7a6161af0c887ef91b7d41a53e7c5a1ca976325f429cb46ea9bc30ecc",
                 "sha256:de526c12914f0c550d15924c62d72abc48d6fe7364aa87328337a31007fe8a4f"
             ],
-            "markers": "python_version >= '3.7'",
+            "markers": "python_version < '3.11'",
             "version": "==2.0.1"
         },
         "typing-extensions": {

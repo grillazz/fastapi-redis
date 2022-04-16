@@ -12,7 +12,6 @@ black = "*"
 autoflake = "*"
 fastapi = "*"
 uvicorn = {extras = ["standard"], version = "*"}
-pydantic = "*"
 pytest-cov = "*"
 httpx = "*"
 redis = "*"
