@@ -1,10 +1,10 @@
-from aioredis import Redis
+import redis.asyncio as redis
 
 
 class MoleculesRepository:
     """Stores and Retrieves chemical molecules from Redis Hash"""
 
-    def __init__(self, redis: Redis):
+    def __init__(self, redis: redis.Redis):
         self._redis = redis
 
     async def set_multiple(self, key: str, smiles: dict):
