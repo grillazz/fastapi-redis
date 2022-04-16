@@ -23,6 +23,7 @@ aioredis = "*"
 rich = "*"
 pyupgrade = "*"
 wurlitzer = "*"
+redis = "*"
 
 [requires]
 python_version = "3.10"
