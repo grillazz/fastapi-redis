@@ -10,7 +10,7 @@ logger = get_logger(__name__)
 global_settings = config.Settings()
 
 
-app = FastAPI(title="ChemCompoundsAPI", version="0.4")
+app = FastAPI(title="ChemCompoundsAPI", version="0.5")
 app.include_router(smiles_router)
 
 
