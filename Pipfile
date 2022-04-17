@@ -13,6 +13,7 @@ autoflake = "*"
 fastapi = "*"
 uvicorn = {extras = ["standard"], version = "*"}
 pytest-cov = "*"
+pytest-asyncio = "*"
 httpx = "*"
 redis = "*"
 rich = "*"
