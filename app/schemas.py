@@ -1,4 +1,4 @@
-from typing import Optional
+from typing import Optional, Dict, List
 
 from pydantic import BaseModel, Field
 
@@ -24,18 +24,18 @@ class PropsSchema(BaseModel):
 
 
 class CompoundSchema(BaseModel):
-    id: dict = Field(...)
-    atoms: dict = Field(...)
-    bonds: Optional[dict] = None
-    stereo: Optional[list] = None
-    coords: list = Field(...)
+    id: Dict = Field(...)
+    atoms: Dict = Field(...)
+    bonds: Optional[Dict] = None
+    stereo: Optional[List] = None
+    coords: List = Field(...)
     charge: int = Field(...)
-    props: list[PropsSchema] = Field(...)
-    count: dict = Field(...)
+    props: List[PropsSchema] = Field(...)
+    count: Dict = Field(...)
 
 
 class CompoundsListSchema(BaseModel):
-    PC_Compounds: list[CompoundSchema] = Field(...)
+    PC_Compounds: List[CompoundSchema] = Field(...)
 
     class Config:
         schema_extra = {
