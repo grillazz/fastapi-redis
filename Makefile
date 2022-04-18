@@ -19,8 +19,8 @@ clean: ## Reset project containers with compose
 	docker-compose down -v --remove-orphans
 
 .PHONY: lock
-lock:	## Refresh pipfile.lock
-	pipenv lock --pre
+lock:	## Refresh pipfile.lock and requirements.txt
+	 pipenv lock -r > requirements.txt
 
 .PHONY: requirements
 requirements:	## Refresh requirements.txt from pipfile.lock
