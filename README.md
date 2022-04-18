@@ -5,7 +5,7 @@
 ![language](https://img.shields.io/badge/language-python-blue?style)
 [![license](https://img.shields.io/github/license/grillazz/fastapi-redis)](https://github.com/grillazz/fastapi-redis/blob/main/LICENSE)
 ![visitors](https://visitor-badge.laobi.icu/badge?page_id=grillazz.fastapi-redis")
-[![CI](https://img.shields.io/github/workflow/status/grillazz/fastapi-redis/Unit%20Tests/develop)](https://github.com/grillazz/fastapi-redis/actions/workflows/build-and-test.yml?query=event%3Apull_request+is%3Asuccess)
+[![CI](https://img.shields.io/github/workflow/status/grillazz/fastapi-redis/Unit%20Tests/main)](https://github.com/grillazz/fastapi-redis/actions/workflows/build-and-test.yml)
 
 ![fastapi-redis](/static/mols.jpg)
 
