@@ -4,7 +4,6 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-icecream = "*"
 isort = "*"
 mypy = "*"
 flake8 = "*"
@@ -18,6 +17,7 @@ httpx = "*"
 redis = "*"
 rich = "*"
 wurlitzer = "*"
+redis-om = "*"
 
 [requires]
 python_version = "3.10"
