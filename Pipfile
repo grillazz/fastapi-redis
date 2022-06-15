@@ -4,7 +4,6 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-icecream = "*"
 isort = "*"
 mypy = "*"
 flake8 = "*"
