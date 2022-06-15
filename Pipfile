@@ -17,6 +17,7 @@ httpx = "*"
 redis = "*"
 rich = "*"
 wurlitzer = "*"
+redis-om = "*"
 
 [requires]
 python_version = "3.10"
