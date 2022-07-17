@@ -90,11 +90,17 @@ up                   Run project with compose
 Beside of using latest and greatest version of [Redis](https://redis.io/) with it robustness, powerfulness and speed
 there is [FastAPI](https://fastapi.tiangolo.com/) (modern, fast (high-performance), 
 web framework for building APIs with Python 3.10+ based on standard Python type hints.) already reviewed
-on [thoughtworks](https://www.thoughtworks.com/radar/languages-and-frameworks?blipid=202104087).
-[Aioredis 2.0](https://aioredis.readthedocs.io/en/latest/) is already implemented as redis client python async library.
+on [thoughtworks](https://www.thoughtworks.com/radar/languages-and-frameworks?blipid=202104087) and presented in 
+Python Developers [Survey 2021 Results](https://lp.jetbrains.com/python-developers-survey-2021/#FrameworksLibraries)
+as the fifth official annual Python Developers Survey, 
+conducted as a collaborative effort between the Python Software Foundation and JetBrains.
+
+[redis-py](https://github.com/redis/redis-py) is already implemented as Python interface to the Redis key-value store.
+
 Special thanks going to maintainers of [rdkit-pypi](https://github.com/kuelumbus/rdkit-pypi).
 
 Hope you enjoy it.
 
 ### Change Log
 - 16 APR 2022 aioredis replaced with redis.asyncio
+- 15 JUN 2022 re-implement api with redis-om
