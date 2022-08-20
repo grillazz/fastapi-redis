@@ -9,7 +9,7 @@ RUN set -ex && pip install --upgrade pip
 
 # Install dependencies
 RUN set -ex && pip install -r requirements.txt
-RUN set -ex && pip install rdkit-pypi==2021.9.4
+RUN set -ex && pip install rdkit-pypi==2022.3.5
 
 FROM builder as final
 WORKDIR /source
