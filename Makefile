@@ -20,7 +20,7 @@ clean: ## Reset project containers with compose
 
 .PHONY: lock
 lock:	## Refresh pipfile.lock and requirements.txt
-	 pipenv lock -r > requirements.txt
+	 	pipenv lock --requirements -dev >| requirements.txt
 
 .PHONY: requirements
 requirements:	## Refresh requirements.txt from pipfile.lock
