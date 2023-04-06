@@ -24,7 +24,7 @@ which allow fast analyze chem molecules.
 
 This showcase can be quickly integrated with other services via REST API and extended to deliver desired chem compound bakery.
 
-Project as whole is build on FastAPI framework, Python 3.10, Redis.
+Project as whole is build on FastAPI framework, Python 3.11, Redis.
 
 
 ### How to Setup
@@ -89,7 +89,7 @@ up                   Run project with compose
 ### Backbone
 Beside of using latest and greatest version of [Redis](https://redis.io/) with it robustness, powerfulness and speed
 there is [FastAPI](https://fastapi.tiangolo.com/) (modern, fast (high-performance), 
-web framework for building APIs with Python 3.10+ based on standard Python type hints.) already reviewed
+web framework for building APIs with Python 3.11+ based on standard Python type hints.) already reviewed
 on [thoughtworks](https://www.thoughtworks.com/radar/languages-and-frameworks?blipid=202104087) and presented in 
 Python Developers [Survey 2021 Results](https://lp.jetbrains.com/python-developers-survey-2021/#FrameworksLibraries)
 as the fifth official annual Python Developers Survey, 
@@ -102,5 +102,8 @@ Special thanks going to maintainers of [rdkit-pypi](https://github.com/kuelumbus
 Hope you enjoy it.
 
 ### Change Log
+- 6 MAY 2023 bump all project deps and rdkit = "^2022.9.5"
+- 6 MAY 2023 move project to python 3.11
+- 6 MAY 2023 switch project to poetry and remove pipenv
 - 16 APR 2022 aioredis replaced with redis.asyncio
 - 15 JUN 2022 re-implement api with redis-om

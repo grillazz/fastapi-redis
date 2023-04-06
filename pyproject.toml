@@ -1,0 +1,25 @@
+[tool.poetry]
+name = "fastapi-redis"
+version = "0.0.1"
+description = ""
+authors = ["Jakub Miazek <the@grillazz.com>"]
+readme = "README.md"
+packages = [{include = "fastapi_redis"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+fastapi = "^0.95.0"
+uvicorn = "^0.21.1"
+redis = "^4.5.4"
+redis-om = "^0.1.2"
+wurlitzer = "^3.0.3"
+rich = "^13.3.3"
+pytest-asyncio = "^0.21.0"
+pytest-cov = "^4.0.0"
+pytest-httpx = "^0.21.3"
+rdkit = "^2022.9.5"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

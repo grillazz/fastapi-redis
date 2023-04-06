@@ -3,7 +3,7 @@ from typing import AnyStr
 from fastapi import APIRouter, status
 from rdkit import Chem
 from rdkit.Chem import MolFromSmiles, RDKFingerprint
-from rdkit.Chem.Draw import rdMolDraw2D
+# from rdkit.Chem.Draw import rdMolDraw2D
 from rdkit.DataStructs import CreateFromBitString, FingerprintSimilarity
 from starlette.responses import JSONResponse, Response
 from wurlitzer import pipes
@@ -53,35 +53,35 @@ async def get_and_compare(compound: str, redis_hash: str):
     }
 
 
-@smiles_router.get("/draw-smiles")
-async def draw(smiles: AnyStr, size: int):
-    """
-    Convert SMILE code to 2D molecule image in SVG format
-    :param smiles:
-    :param size:
-    :return:
-    """
-
-    try:
-        # Capture C-level stdout/stderr pipes
-        # TODO: make is a part of pydantic validation
-        with pipes() as (out, err):
-            # convert from smiles to molecule class
-            molecule = Chem.MolFromSmiles(smiles)
-        stderr: str = err.read()
-        if molecule:
-            molecule = rdMolDraw2D.PrepareMolForDrawing(molecule)
-            # start drawing molecule image
-            drawer = rdMolDraw2D.MolDraw2DSVG(size, size)
-            drawer.drawOptions().addStereoAnnotation = True
-            drawer.drawOptions().addAtomIndices = True
-            drawer.DrawMolecule(molecule)
-            drawer.FinishDrawing()
-            # response as proper svg+xml
-            svg = drawer.GetDrawingText()
-            return Response(content=svg, media_type="image/svg+xml")
-        else:
-            data = {"API Error": stderr.splitlines()[1]}
-            return JSONResponse(content=data, status_code=status.HTTP_422_UNPROCESSABLE_ENTITY)
-    except Exception as ex:
-        print(ex)
+# @smiles_router.get("/draw-smiles")
+# async def draw(smiles: AnyStr, size: int):
+#     """
+#     Convert SMILE code to 2D molecule image in SVG format
+#     :param smiles:
+#     :param size:
+#     :return:
+#     """
+#
+#     try:
+#         # Capture C-level stdout/stderr pipes
+#         # TODO: make is a part of pydantic validation
+#         with pipes() as (out, err):
+#             # convert from smiles to molecule class
+#             molecule = Chem.MolFromSmiles(smiles)
+#         stderr: str = err.read()
+#         if molecule:
+#             molecule = rdMolDraw2D.PrepareMolForDrawing(molecule)
+#             # start drawing molecule image
+#             drawer = rdMolDraw2D.MolDraw2DSVG(size, size)
+#             drawer.drawOptions().addStereoAnnotation = True
+#             drawer.drawOptions().addAtomIndices = True
+#             drawer.DrawMolecule(molecule)
+#             drawer.FinishDrawing()
+#             # response as proper svg+xml
+#             svg = drawer.GetDrawingText()
+#             return Response(content=svg, media_type="image/svg+xml")
+#         else:
+#             data = {"API Error": stderr.splitlines()[1]}
+#             return JSONResponse(content=data, status_code=status.HTTP_422_UNPROCESSABLE_ENTITY)
+#     except Exception as ex:
+#         print(ex)

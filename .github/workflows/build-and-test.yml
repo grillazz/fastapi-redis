@@ -1,4 +1,3 @@
-
 name: Unit Tests
 
 on: [pull_request]
@@ -8,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: ["3.7", "3.8", "3.9", "3.10"]
+        python-version: ["3.11"]
       fail-fast: false
 
     services:
@@ -17,17 +16,24 @@ jobs:
         ports:
           - 6379:6379
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Set up Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4
         with:
           python-version: ${{ matrix.python-version }}
-      - name: Install required libs
-        run: pip install -r requirements.txt
-      - name: Install rdkit library
-        run: python3 -m pip install rdkit-pypi==2021.9.2
-      - name: Run tests
-        run: pytest
+      - name: Install Poetry
+        uses: snok/install-poetry@v1
+      - name: Load cached venv
+        id: cached-poetry-dependencies
+        uses: actions/cache@v3
+        with:
+          path: .venv
+          key: venv-${{ runner.os }}-3.11-${{ hashFiles('**/poetry.lock') }}
+      - name: Install dependencies
+        if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
+        run: poetry install --no-interaction --no-root
+      - name: Test Code
+        run: poetry run pytest
         env:
           PYTHONDONTWRITEBYTECODE: 1
           PYTHONUNBUFFERED: 1
