@@ -1,8 +1,8 @@
-import asyncio
 import json
 import pathlib
 
 import pytest
+import pytest_asyncio
 from httpx import AsyncClient
 
 from app.main import app
@@ -27,7 +27,7 @@ def get_payload(request):
         return json.load(compounds)
 
 
-@pytest.fixture
+@pytest_asyncio.fixture
 async def client():
     async with AsyncClient(app=app, base_url="http://test") as ac:
         app.state.redis = await init_redis_pool()
