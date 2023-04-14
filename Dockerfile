@@ -37,7 +37,7 @@ FROM install as app-image
 
 COPY tests/ tests/
 COPY app/ app/
-COPY .env ./
+COPY .env logger.ini ./
 
 # create a non-root user and switch to it, for security.
 RUN addgroup --system --gid 1001 "app-user"
