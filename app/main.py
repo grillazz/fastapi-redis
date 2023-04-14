@@ -1,16 +1,16 @@
 from fastapi import Depends, FastAPI
 
 from app import config
+from app.logging import AppLogger
 from app.redis import init_redis_pool
 from app.routers import smiles_router
 from app.service import MoleculesRepository
-from app.utils import get_logger
 
-logger = get_logger(__name__)
+logger = AppLogger.__call__().get_logger()
 global_settings = config.Settings()
 
 
-app = FastAPI(title="ChemCompoundsAPI", version="0.6")
+app = FastAPI(title="ChemCompoundsAPI", version="0.0.0")
 app.include_router(smiles_router)
 
 

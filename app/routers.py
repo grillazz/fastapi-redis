@@ -3,6 +3,7 @@ from typing import AnyStr
 from fastapi import APIRouter, status
 from rdkit import Chem
 from rdkit.Chem import MolFromSmiles, RDKFingerprint
+
 # from rdkit.Chem.Draw import rdMolDraw2D
 from rdkit.DataStructs import CreateFromBitString, FingerprintSimilarity
 from starlette.responses import JSONResponse, Response
