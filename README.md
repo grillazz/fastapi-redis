@@ -102,8 +102,9 @@ Special thanks going to maintainers of [rdkit-pypi](https://github.com/kuelumbus
 Hope you enjoy it.
 
 ### Change Log
-- 6 MAY 2023 bump all project deps and rdkit = "^2022.9.5"
-- 6 MAY 2023 move project to python 3.11
-- 6 MAY 2023 switch project to poetry and remove pipenv
 - 16 APR 2022 aioredis replaced with redis.asyncio
 - 15 JUN 2022 re-implement api with redis-om
+- 6 APR 2023 bump all project deps and rdkit = "^2022.9.5"
+- 6 APR 2023 move project to python 3.11
+- 6 APR 2023 switch project to poetry and remove pipenv
+- 14 APR 2023 implement rich for logging
