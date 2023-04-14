@@ -3,9 +3,9 @@ from functools import lru_cache
 
 from pydantic import AnyUrl, BaseSettings
 
-from app.utils import get_logger
+from app.logging import AppLogger
 
-logger = get_logger(__name__)
+logger = AppLogger.__call__().get_logger()
 
 
 class Settings(BaseSettings):
