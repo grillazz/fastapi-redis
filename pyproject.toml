@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "fastapi-redis"
-version = "0.0.1"
+version = "0.0.2"
 description = ""
 authors = ["Jakub Miazek <the@grillazz.com>"]
 readme = "README.md"
@@ -18,6 +18,10 @@ pytest-asyncio = "^0.21.0"
 pytest-cov = "^4.0.0"
 pytest-httpx = "^0.21.3"
 rdkit = "^2022.9.5"
+uvloop = "^0.17.0"
+httptools = "^0.5.0"
+isort = "^5.12.0"
+black = "^23.3.0"
 
 
 [build-system]
