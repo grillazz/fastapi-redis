@@ -18,10 +18,6 @@ down: ## Stop project containers with compose
 clean: ## Reset project containers with compose
 	docker-compose down -v --remove-orphans
 
-.PHONY: requirements
-requirements:	## Refresh requirements.txt from pipfile.lock
-		pipenv lock --requirements --dev >| requirements.txt
-
 .PHONY: test
 test:	## Run project unit tests with coverage
 	docker-compose run --rm chem-molecules pytest .
