@@ -9,7 +9,7 @@ from app.config import settings as global_settings
 
 logger = AppLogger().get_logger()
 
-app = FastAPI(title="ChemCompoundsAPI", version="0.0.0")
+app = FastAPI(title="ChemCompoundsAPI", version="0.1.0")
 app.include_router(smiles_router)
 
 
