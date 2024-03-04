@@ -1,27 +1,28 @@
 [tool.poetry]
 name = "fastapi-redis"
-version = "0.0.2"
+version = "0.1.0"
 description = ""
 authors = ["Jakub Miazek <the@grillazz.com>"]
 readme = "README.md"
 packages = [{include = "fastapi_redis"}]
 
 [tool.poetry.dependencies]
-python = "^3.11"
-fastapi = "^0.95.2"
-uvicorn = "^0.21.1"
-redis = "^4.5.5"
-redis-om = "^0.1.2"
+python = "^3.12"
+fastapi = "^0.110.0"
+pydantic = {version = "2.6.1", extras = ["email"]}
+pydantic-settings = "2.2.0"
+uvicorn = "^0.27.1"
+redis = "^5.0.2"
 wurlitzer = "^3.0.3"
-rich = "^13.4.1"
-pytest-asyncio = "^0.21.0"
-pytest-cov = "^4.0.0"
-pytest-httpx = "^0.21.3"
-rdkit = "^2022.9.5"
-uvloop = "^0.17.0"
-httptools = "^0.5.0"
-isort = "^5.12.0"
-black = "^23.3.0"
+rich = "^13.7.1"
+pytest = "^8.0.2"
+pytest-cov = "^4.1.0"
+pytest-httpx = "^0.30.0"
+rdkit = "^2023.9.5"
+uvloop = "^0.19.0"
+httptools = "^0.6.1"
+isort = "^5.13.2"
+black = "^24.2.0"
 
 
 [build-system]

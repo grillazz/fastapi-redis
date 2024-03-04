@@ -1,11 +1,7 @@
 import os
-from functools import lru_cache
 
-from pydantic import AnyUrl, BaseSettings
-
-from app.logging import AppLogger
-
-logger = AppLogger.__call__().get_logger()
+from pydantic import AnyUrl
+from pydantic_settings import BaseSettings
 
 
 class Settings(BaseSettings):
@@ -20,7 +16,4 @@ class Settings(BaseSettings):
     web_server: str = os.getenv("WEB_SERVER", "web_server")
 
 
-@lru_cache()
-def get_settings() -> BaseSettings:
-    logger.info("Loading config settings from the environment...")
-    return Settings()
+settings = Settings()

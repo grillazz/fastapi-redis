@@ -1,14 +1,13 @@
 from fastapi import Depends, FastAPI
 
-from app import config
+from app.config import  settings
 from app.logging import AppLogger
 from app.redis import init_redis_pool
 from app.routers import smiles_router
 from app.service import MoleculesRepository
+from app.config import settings as global_settings
 
-logger = AppLogger.__call__().get_logger()
-global_settings = config.Settings()
-
+logger = AppLogger().get_logger()
 
 app = FastAPI(title="ChemCompoundsAPI", version="0.0.0")
 app.include_router(smiles_router)
@@ -28,7 +27,7 @@ async def shutdown_event():
 
 
 @app.get("/health-check")
-async def health_check(settings: config.Settings = Depends(config.get_settings)):
+async def health_check():
     try:
         await app.state.redis.set(str(settings.redis_url), settings.up)
         value = await app.state.redis.get(str(settings.redis_url))

@@ -2,7 +2,6 @@ import json
 import pathlib
 
 import pytest
-import pytest_asyncio
 from httpx import AsyncClient
 
 from app.main import app
@@ -11,23 +10,24 @@ from app.service import MoleculesRepository
 
 
 @pytest.fixture(
+    scope="session",
     params=[
         pytest.param(("asyncio", {"use_uvloop": True}), id="asyncio+uvloop"),
-    ]
+    ],
 )
 def anyio_backend(request):
     return request.param
 
 
-@pytest.fixture(autouse=True)
+@pytest.fixture(scope="session")
 def get_payload(request):
-    path = pathlib.Path(request.node.fspath.strpath)
-    file = path.with_name("PubChem_compound_text_covid-19_records.json")
-    with file.open() as compounds:
+    path = pathlib.Path("tests/PubChem_compound_text_covid-19_records.json")
+    # file = path.with_name("/tests/PubChem_compound_text_covid-19_records.json")
+    with path.open() as compounds:
         return json.load(compounds)
 
 
-@pytest_asyncio.fixture
+@pytest.fixture(scope="session")
 async def client():
     async with AsyncClient(app=app, base_url="http://test") as ac:
         app.state.redis = await init_redis_pool()
