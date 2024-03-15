@@ -73,7 +73,9 @@ class CompoundsListSchema(BaseModel):
                                     "source": "openeye.com",
                                     "release": "2019.06.18",
                                 },
-                                "value": {"sval": "CSC1=NC2=NN=C(C(=O)N2N1)[N+](=O)[O-]"},
+                                "value": {
+                                    "sval": "CSC1=NC2=NN=C(C(=O)N2N1)[N+](=O)[O-]"
+                                },
                             },
                         ],
                         "count": {},
@@ -96,7 +98,9 @@ class CompoundsListSchema(BaseModel):
                                     "source": "openeye.com",
                                     "release": "2019.06.18",
                                 },
-                                "value": {"sval": "CCS(=O)(=O)N1CC(C1)(CC#N)N2C=C(C=N2)C3=C4C=CNC4=NC=N3"},
+                                "value": {
+                                    "sval": "CCS(=O)(=O)N1CC(C1)(CC#N)N2C=C(C=N2)C3=C4C=CNC4=NC=N3"
+                                },
                             },
                         ],
                         "count": {},
