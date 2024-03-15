@@ -1,6 +1,6 @@
 from fastapi import Depends, FastAPI
 
-from app.config import  settings
+from app.config import settings
 from app.logging import AppLogger
 from app.redis import init_redis_pool
 from app.routers import smiles_router

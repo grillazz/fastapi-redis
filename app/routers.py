@@ -46,11 +46,16 @@ async def get_and_compare(compound: str, redis_hash: str):
     mol = RDKFingerprint(MolFromSmiles(compound))
 
     mol_hash = await main.app.state.mols_repo.get_all(redis_hash)
-    similarity = {smile: FingerprintSimilarity(CreateFromBitString(fp), mol) for smile, fp in mol_hash.items()}
+    similarity = {
+        smile: FingerprintSimilarity(CreateFromBitString(fp), mol)
+        for smile, fp in mol_hash.items()
+    }
 
     return {
         "number_of_smiles_to_compare": len(similarity),
-        "similarity": dict(sorted(similarity.items(), key=lambda item: item[1], reverse=True)),
+        "similarity": dict(
+            sorted(similarity.items(), key=lambda item: item[1], reverse=True)
+        ),
     }
 
 

@@ -17,7 +17,9 @@ global_settings = config.Settings()
         ),
     ),
 )
-async def test_set_fields_on_hash(client, get_payload, response: dict, status_code: int):
+async def test_set_fields_on_hash(
+    client, get_payload, response: dict, status_code: int
+):
     post_response = await client.post(
         f"/smiles/add-to-hash?redis_hash={global_settings.redis_hash}",
         json=get_payload,
